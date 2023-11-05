@@ -1,3 +1,10 @@
 theme: jekyll-theme-minimal
 title: AU 2023 Course Materials
 description: lorum ipsum
+
+navbar-links:
+  About Me: "aboutme"
+  Resources:
+    - Best Practices for Systems Analyusis: "https://help.autodesk.com/view/RVT/2023/ENU/?guid=GUID-A9F31524-C777-487F-B731-6DACB532B13E"
+    - OpenStudio Measure Writing Guide: "https://nrel.github.io/OpenStudio-user-documentation/reference/measure_writing_guide/"
+    - OpenStudio API/SDK (v3.6.1): "https://s3.amazonaws.com/openstudio-sdk-documentation/index.html"
