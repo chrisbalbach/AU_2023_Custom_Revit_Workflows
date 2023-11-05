@@ -1,6 +1,14 @@
 # AU_2023_Custom_Revit_Workflows
 This repository contains the Revit Projects, OpenStudio Measures and Revit Workflows needed to reproduce the work presented at the AU 2023 Session 602389 Titled "Design and Analysis of Building Electrification with Revit Systems Analysis" 
 
+## Table of Content 
+
+* [Revit Projects](# Revit Projects)
+* [OS Measures used by Revit Workflows](# OS Measures used by Revit Workflows)
+* [Revit Workflow files](# Revit Workflow files)
+* [Useful Scripts](# Useful Scripts)
+* [Useful Links](# Useful Links)
+
 # Revit Projects
 
 The Revit File "Retail Big Box_Example.rvt" was used during the course. It can be found in the Revit Files directory of this repository. 
