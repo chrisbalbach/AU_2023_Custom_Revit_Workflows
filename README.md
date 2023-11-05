@@ -9,7 +9,7 @@ This repository contains the Revit Projects, OpenStudio Measures and Revit Workf
 * [Useful Scripts](#useful-scripts)
 * [Useful Links](#useful-links)
 
-#Revit Projects
+# Revit Projects
 
 The Revit File "Retail Big Box_Example.rvt" was used during the course. It can be found in the Revit Files directory of this repository. 
 Users creating Revit workflows that include the "revit_analyze_all_electric_hvac_systems" measure should carefully review the
@@ -17,7 +17,7 @@ existing topology of Air Systems and Zone Equipment objects that have been creat
 These Air Systems and Zone Equipment objects may be deleted/recreated, and connections to (conditioned) Analytical Spaces may
 be redefined by the user, as part of exwercising these workflows.    
 
-#OS Measures used by Revit Workflows
+# OS Measures used by Revit Workflows
 
 The following measures are included in this repository. These measures can be downloaded, edited, and used to create custom OS Based workflows, in Revit. 
 
@@ -54,7 +54,7 @@ Measure code for using values in Column B for Rows (11 - 41) have not yet been w
 
 ## 5) revit_create_typical_shw_systems_using_os_standards_gem
 
-#Revit Workflow files
+# Revit Workflow files
 
 ## Example 1 Annual Building Energy Simulation
 
@@ -64,6 +64,6 @@ Measure code for using values in Column B for Rows (11 - 41) have not yet been w
 
 ## Example 2 HVAC Systems Loads and Sizing
 
-#Useful Scripts
+# Useful Scripts
 
-#Useful Links
+# Useful Links
