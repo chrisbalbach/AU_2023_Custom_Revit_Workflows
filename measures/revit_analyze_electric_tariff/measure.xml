@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<measure>
+  <schema_version>3.1</schema_version>
+  <name>revit_analyze_electric_tariff</name>
+  <uid>6a49c259-d46f-4069-a658-6f78631aef30</uid>
+  <version_id>e5e7bfcc-adb8-4865-92a2-4080f80b1448</version_id>
+  <version_modified>2023-09-05T12:53:29Z</version_modified>
+  <xml_checksum>00000000</xml_checksum>
+  <class_name>RevitAnalyzeElectricTariff</class_name>
+  <display_name>revit_analyze_electric_tariff</display_name>
+  <description>This measures allows a user to define electricity tariffs of different levels of complexity to be modeled.  </description>
+  <modeler_description>The measure supports different definitions for either/both (supplier) and (transprotation and distribution) tariff definitions. A single season defining the summer and no summer periods can be defined. Peak and Off Peak periods 1. Different Pean and OffPeak rated can be applied to the supplier and T&amp;D description. Block charges (up to 3 sdifferent categories) can be defined for both energy and power, for both the supplier and T and D tariffs. </modeler_description>
+  <arguments>
+    <argument>
+      <name>zone_name</name>
+      <display_name>New zone name</display_name>
+      <description>This name will be used as the name of the new zone.</description>
+      <type>String</type>
+      <required>true</required>
+      <model_dependent>false</model_dependent>
+    </argument>
+  </arguments>
+  <outputs />
+  <provenances />
+  <tags>
+    <tag>Economics.Life Cycle Cost Analysis</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>EnergyPlusMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Measure Language</name>
+      <value>Ruby</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>OpenStudio Application</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Parametric Analysis Tool</value>
+      <datatype>string</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>LICENSE.md</filename>
+      <filetype>md</filetype>
+      <usage_type>license</usage_type>
+      <checksum>CD7F5672</checksum>
+    </file>
+    <file>
+      <filename>README.md.erb</filename>
+      <filetype>erb</filetype>
+      <usage_type>readmeerb</usage_type>
+      <checksum>F1C26127</checksum>
+    </file>
+    <file>
+      <filename>.gitkeep</filename>
+      <filetype>gitkeep</filetype>
+      <usage_type>doc</usage_type>
+      <checksum>00000000</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>3.6.1</identifier>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>DEFD4011</checksum>
+    </file>
+    <file>
+      <filename>revit_analyze_electric_tariff_test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>3237B99D</checksum>
+    </file>
+  </files>
+</measure>

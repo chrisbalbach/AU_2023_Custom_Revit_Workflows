@@ -1,0 +1,5 @@
+﻿Argument Name,Value,Source of Value
+space_shw_load_mapping_csv_file_name,Small_House_SHW_Systems_Space_Map.csv,This csv file must be created by the user prior to the workflow being run. 
+os_standards_shw_equip_template_building_type,DOE Ref 1980-2004*MediumOfficeDetailed,See lines (47 - 193) of measure.rb file for allowable enumerations
+os_standards_shw_equip_fuel_source,Electricity,See line 253 of measure.rb file for allowable enumerations
+    ,,

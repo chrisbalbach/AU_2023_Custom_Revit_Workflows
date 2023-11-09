@@ -1,0 +1,13 @@
+﻿gbXML Space id,Analytical Space Name,OS Standards Template*BuildingType*SpaceType,Notes
+aim0157,8 Office-Guest,90.1-2013*Retail*Retail,
+aim0256,9 Living,90.1-2013*Retail*Back_Space,
+aim0343,2-01 Analytical Space,90.1-2013*Office*Attic,
+aim0391,10 Closet,90.1-2013*Office*Attic,
+aim0625,4 Closet,90.1-2013*Office*Main Mechanical,
+aim0676,5 Laun,90.1-2013*Office*Attic,
+aim0763,6 Bath,90.1-2013*Office*BreakRoom,
+aim0850,7 Pdr,90.1-2013*Office*Restroom,
+aim0937,3 Bedroom,90.1-2013*Office*Restroom,
+aim1204,1 Dining,90.1-2013*Office*ClosedOffice,
+aim1291,2 Kitchen,90.1-2013*Office*ClosedOffice,
+aim2163,2-02 Analytical Space,90.1-2013*Office*ClosedOffice,

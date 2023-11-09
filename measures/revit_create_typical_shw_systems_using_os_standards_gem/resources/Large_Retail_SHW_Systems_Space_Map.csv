@@ -1,0 +1,11 @@
+﻿gbXML Space id,gbXML Space Name,OS Standards SHW Template*BuildingType*SpaceType,Source of Value
+aim0139,Sales 101,No SHW,See OpenStudio Standards Gem documentation 
+aim0202,Storage 103,No SHW,See OpenStudio Standards Gem documentation 
+aim0598,Analytical Space 3,No SHW,See OpenStudio Standards Gem documentation 
+aim0664,Analytical Space 2,No SHW,See OpenStudio Standards Gem documentation 
+aim1149,Mechanical 108,No SHW,See OpenStudio Standards Gem documentation 
+aim1360,Analytical Space 1,No SHW,See OpenStudio Standards Gem documentation 
+aim2057,Break Room 105,90.1-2007*SecondarySchool*Restroom,See OpenStudio Standards Gem documentation 
+aim6581,Women 106,90.1-2007*SecondarySchool*Restroom,See OpenStudio Standards Gem documentation 
+aim6632,Men 107,90.1-2007*SecondarySchool*Restroom,See OpenStudio Standards Gem documentation 
+aim6683,Office 104,No SHW,See OpenStudio Standards Gem documentation 

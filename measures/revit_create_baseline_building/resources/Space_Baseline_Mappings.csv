@@ -1,0 +1,11 @@
+﻿gbXML Space id,Analytical Space Name,OS Standards Template*BuildingType*SpaceType,Notes
+aim0143,Sales 101,90.1-2013*Retail*Retail,
+aim0206,Storage 103,90.1-2013*Retail*Back_Space,
+aim0597,Analytical Space 2,90.1-2013*Office*Attic,
+aim0664,Analytical Space 3,90.1-2013*Office*Attic,
+aim1151,Mechanical 108,90.1-2013*Office*Main Mechanical,
+aim1368,Analytical Space 1,90.1-2013*Office*Attic,
+aim1879,Break Room 105,90.1-2013*Office*BreakRoom,
+aim5208,Women 106,90.1-2013*Office*Restroom,
+aim5259,Men 107,90.1-2013*Office*Restroom,
+aim5310,Office 104,90.1-2013*Office*ClosedOffice,

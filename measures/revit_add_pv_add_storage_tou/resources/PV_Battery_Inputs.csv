@@ -1,0 +1,42 @@
+﻿Argument Name,Units,Value,System Component,Source of Value
+Max Power Output,kW,30,PV,defined by user
+Array Type,N/A,OneAxis,PV,See measure.rb lines (36-40) for allowable enumerations
+Module Type,N/A,Premium,PV,See measure.rb lines (50-52) for allowable enumerations
+System Losses Fraction,(0 - 100),17,PV,defined by user
+Array Tilt,Degrees,30,PV,defined by user
+Array Azimuth,Degrees,270,PV,defined by user
+Ground Coverage Ratio,(0 - 100),35,PV,defined by user
+Inverter Efficiency,(0-1),0.96,Inverter,defined by user
+DC to AC Size Ratio,N/A,1.1,Inverter,defined by user
+Converter Simple Fixed Efficiency,(0-1),0.94,Converter,defined by user
+Converter Ancillary Power Consumed In Standby,W,100,Converter,defined by user
+Converter Radiative Fraction,(0-1),0.25,Converter,defined by user
+Battery Make Model,N/A,Tesla PowerWall,Storage/Inverter/Converter,defined by user
+Nominal Capacity,kWh,10,Storage,defined by user
+Usable Capacity,kWh,9.5,Storage,defined by user
+Rated Power Output,kW,5,Storage,defined by user
+Nominal Voltage,V,50,Storage,defined by user
+Round Trip Efficiency,(0-1),0.95,Storage,defined by user
+Minimum State Of Charge Fraction,(0-1),0.1,Storage,defined by user
+Maximum State Of Charge Fraction,(0-1),0.97,Storage,defined by user
+Lifetime Model,N/A,KandlerSmith,Storage,defined by user
+Initial Fraction State of Charge,(0-1),0.95,Storage,defined by user
+Percentage of Maximum Charge Power to use for Charging,fraction,0.8,ELCD,defined by user
+Percentage of Maximum Discharge Power to use for Discharging,fraction,0.95,ELCD,defined by user
+Summer Month to Begin Storage Season,Integer,3,ELCD,defined by user
+Summer Day to Begin Storage Season,Integer,1,ELCD,defined by user
+Summer Month to End Storage Season,Integer,9,ELCD,defined by user
+Summer Day to End Storage Season,Integer,15,ELCD,defined by user
+Winter Weekday Hour To Begin Storage Discharge,Integer,9,ELCD,defined by user
+Winter Weekday Hour To End Storage Discharge,Integer,22,ELCD,defined by user
+Winter Weekend Hour To Begin Storage Discharge,Integer,9,ELCD,defined by user
+Winter Weekend Hour To End Storage Discharge,Integer,22,ELCD,defined by user
+Summer Weekday Hour To Begin Storage Discharge,Integer,11,ELCD,defined by user
+Summer Weekday Hour To End Storage Discharge,Integer,20,ELCD,defined by user
+Summer Weekend Hour To Begin Storage Discharge,Integer,11,ELCD,defined by user
+Summer Weekend Hour To End Storage Discharge,Integer,20,ELCD,defined by user
+Design Storage Control Charge Power Per Battery,kW,1927,ELCD,defined by user
+Design Storage Control Discharge Power Per Battery,kW,1927,ELCD,defined by user
+Storage Control Utility Demand Target,kW,450,ELCD,defined by user
+Minimum Storage State Of Charge Fraction,(0-1),0.05,ELCD,defined by user
+Maximum Storage State Of Charge Fraction,(0-1),0.96,ELCD,defined by user

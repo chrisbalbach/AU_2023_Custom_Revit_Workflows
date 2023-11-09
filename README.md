@@ -88,25 +88,25 @@ measure. Values should be provided in column B of the .csv file, for **Row 2 thr
 
 For all Rows, Column E of the .csv file describes the allowable enumarations. 
 
-#### csv file #1 simple tariff example: "Electric_Utility_Tariff_Arguments.csv"
+#### example csv file #1 Simple Tariff
 
-This table shows the configuraton of the .csv file for a flat energy tariff of $0.15 / kWh. 
+This table shows the configuraton of the .csv file for a **flat energy tariff of $0.15 / kWh**. 
 
 * No demand charges are modeled.
 * No (peak/on peak) hourly time-of-use charges are modeled.
 * No seasonal (summer/nonsummer) charges are modeled.
 * A single supplier tariff is modeled (**all** energy cost values associated with the T&D Tariff are zero).
 
-|Argument Name                                 |Value        |Type   |Units      |Source of Value                                                                                       |Element Category             |Required/Optional|
-|----------------------------------------------|-------------|-------|-----------|------------------------------------------------------------------------------------------------------|-----------------------------|-----------------|
+|**Argument Name**                             |**Value**    |**Type**|**Units** |**Source of Value**                                                                                   |**Element Category**         |**Required/Optional**|
+|----------------------------------------------|-------------|-------|-----------|------------------------------------------------------------------------------------------------------|-----------------------------|---Required--------------|
 |tariff_name                                   |Simple Tariff|       |N/A        |user defined                                                                                          |General Info                 |Required         |
-|demand_window_length                          |QuarterHour  |String |N/A        |measure.rb lines (1218 - 1222)                                                                        |General Info                 |                 |
-|summer_start_month                            |5            |Integer|month      |user defined                                                                                          |General Info                 |                 |
-|summer_start_day                              |15           |Integer|day        |user defined                                                                                          |General Info                 |                 |
-|summer_end_month                              |9            |Integer|month      |user defined                                                                                          |General Info                 |                 |
-|summer_end_day                                |15           |Integer|day        |user defined                                                                                          |General Info                 |                 |
-|peak_start_hour                               |12           |Integer|hour of day|user defined                                                                                          |General Info                 |                 |
-|peak_end_hour                                 |18           |Integer|hour of day|user defined                                                                                          |General Info                 |                 |
+|demand_window_length                          |QuarterHour  |String |N/A        |measure.rb lines (1218 - 1222)                                                                        |General Info                 | Required                |
+|summer_start_month                            |5            |Integer|month      |user defined                                                                                          |General Info                 |Required                 |
+|summer_start_day                              |15           |Integer|day        |user defined                                                                                          |General Info                 |Required                 |
+|summer_end_month                              |9            |Integer|month      |user defined                                                                                          |General Info                 |Required                |
+|summer_end_day                                |15           |Integer|day        |user defined                                                                                          |General Info                 |Required                 |
+|peak_start_hour                               |12           |Integer|hour of day|user defined                                                                                          |General Info                 |Required                |
+|peak_end_hour                                 |18           |Integer|hour of day|user defined                                                                                          |General Info                 |Required                 |
 |supply_elec_rate_sum_peak                     |0.15         |Double |$/kWh      |user defined                                                                                          |Supplier                     |                 |
 |supply_elec_rate_sum_nonpeak                  |0.15         |Double |$/kWh      |user defined                                                                                          |Supplier                     |                 |
 |supply_elec_rate_nonsum_peak                  |0.15         |Double |$/kWh      |user defined                                                                                          |Supplier                     |                 |
@@ -142,7 +142,7 @@ This table shows the configuraton of the .csv file for a flat energy tariff of $
 |t_and_d_elec_demand_sum                       |0            |Double |$/kW       |user defined                                                                                          |Transmission and Distribution|                 |
 |t_and_d_elec_demand_nonsum                    |0            |Double |$/kW       |user defined                                                                                          |Transmission and Distribution|                 |
 |t_and_d_monthly_charge                        |0            |Double |$          |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_qualifying_min_monthly_demand         |0            |Double |kW         |The tariff is only applicable for customers that use <variable> KW for at least one month of the year.|Transmission and Distribution|                 |
+|t_and_d_qualifying_min_monthly_demand         |0            |Double |kW         |user defined                                                                                          |Transmission and Distribution|                 |
 |t_and_d_summer_elec_block_1_size              |30000        |Double |kWh        |user defined                                                                                          |Transmission and Distribution|                 |
 |t_and_d_summer_elec_block_1_cost_per_kwh      |0            |Double |$/kWh      |user defined                                                                                          |Transmission and Distribution|                 |
 |t_and_d_summer_elec_block_2_size              |50000        |Double |kWh        |user defined                                                                                          |Transmission and Distribution|                 |
@@ -166,9 +166,69 @@ This table shows the configuraton of the .csv file for a flat energy tariff of $
 
 
 
-## 3) revit_create_baseline_building
+## Measure #3 "revit_create_baseline_building"
 
-## 4) revit_add_pv_add_storage_tou
+## Measure #4 "revit_add_pv_add_storage_tou"
+
+This "OpenStudio" measure is designed to allow Revit users to estimate the energy and power impacts from a 'behind the meter' BES (Battery Energy Storage) system composed of a 
+configurable PV System, a configurable Lithium Ion Battery Bank, and a configurable Battery Manageement System.
+The measure **adds new** objects for these components, based on user-defined parameters. The Standard EnergyPlus Output report can be viewed 
+from within Revit, to show the annual energy and peak power impacts of the BES. 
+
+The measure can be used to model a 'Storage Only" scenario by specifying a PV System with a very small value  for the PV 'Max Power Output' variable (for example, 0.1 kW).
+The measure can be used to model a 'PV Only" scenario by specifying a Battery System with a very small value Battery 'Usable Capacity' variable (for example, 0.1 kW).
+'Matched' BES systems (PV + PowerWall, PV + PowerPack, etc.) can be modeled by carefully defining PV System and BES properties.
+
+This measure is often combined with the OpenStudo Tariff measure into custom Revit Workflows for evaluating BES arbitrage opportunities for facilities with known periods of high cost 
+seasonal and time-of-day tariffs. The BES system is desinged to offset 'purchased' electricity demands when it is most expensive (on-peak periods), leveraging the PV/BES to and 
+meet facilty energy demands.
+
+#### csv file #1 revit_add_pv_add_storage_tou: "PV_Battery_Inputs.csv"
+
+|**Argument Name**                                           |**Units**|**Value**      |**System Component**      |**Source of Value**                                    |
+|------------------------------------------------------------|---------|---------------|--------------------------|-------------------------------------------------------|
+|Max Power Output                                            |kW       |30             |PV                        |defined by user                                        |
+|Array Type                                                  |N/A      |OneAxis        |PV                        |See measure.rb lines (36-40) for allowable enumerations|
+|Module Type                                                 |N/A      |Premium        |PV                        |See measure.rb lines (50-52) for allowable enumerations|
+|System Losses Fraction                                      |(0 - 100)|17             |PV                        |defined by user                                        |
+|Array Tilt                                                  |Degrees  |30             |PV                        |defined by user                                        |
+|Array Azimuth                                               |Degrees  |270            |PV                        |defined by user                                        |
+|Ground Coverage Ratio                                       |(0 - 100)|35             |PV                        |defined by user                                        |
+|Inverter Efficiency                                         |(0-1)    |0.96           |Inverter                  |defined by user                                        |
+|DC to AC Size Ratio                                         |N/A      |1.1            |Inverter                  |defined by user                                        |
+|Converter Simple Fixed Efficiency                           |(0-1)    |0.94           |Converter                 |defined by user                                        |
+|Converter Ancillary Power Consumed In Standby               |W        |100            |Converter                 |defined by user                                        |
+|Converter Radiative Fraction                                |(0-1)    |0.25           |Converter                 |defined by user                                        |
+|Battery Make Model                                          |N/A      |Tesla PowerWall|Storage/Inverter/Converter|defined by user                                        |
+|Nominal Capacity                                            |kWh      |10             |Storage                   |defined by user                                        |
+|Usable Capacity                                             |kWh      |9.5            |Storage                   |defined by user                                        |
+|Rated Power Output                                          |kW       |5              |Storage                   |defined by user                                        |
+|Nominal Voltage                                             |V        |50             |Storage                   |defined by user                                        |
+|Round Trip Efficiency                                       |(0-1)    |0.95           |Storage                   |defined by user                                        |
+|Minimum State Of Charge Fraction                            |(0-1)    |0.1            |Storage                   |defined by user                                        |
+|Maximum State Of Charge Fraction                            |(0-1)    |0.97           |Storage                   |defined by user                                        |
+|Lifetime Model                                              |N/A      |KandlerSmith   |Storage                   |defined by user                                        |
+|Initial Fraction State of Charge                            |(0-1)    |0.95           |Storage                   |defined by user                                        |
+|Percentage of Maximum Charge Power to use for Charging      |fraction |0.8            |ELCD                      |defined by user                                        |
+|Percentage of Maximum Discharge Power to use for Discharging|fraction |0.95           |ELCD                      |defined by user                                        |
+|Summer Month to Begin Storage Season                        |Integer  |3              |ELCD                      |defined by user                                        |
+|Summer Day to Begin Storage Season                          |Integer  |1              |ELCD                      |defined by user                                        |
+|Summer Month to End Storage Season                          |Integer  |9              |ELCD                      |defined by user                                        |
+|Summer Day to End Storage Season                            |Integer  |15             |ELCD                      |defined by user                                        |
+|Winter Weekday Hour To Begin Storage Discharge              |Integer  |9              |ELCD                      |defined by user                                        |
+|Winter Weekday Hour To End Storage Discharge                |Integer  |22             |ELCD                      |defined by user                                        |
+|Winter Weekend Hour To Begin Storage Discharge              |Integer  |9              |ELCD                      |defined by user                                        |
+|Winter Weekend Hour To End Storage Discharge                |Integer  |22             |ELCD                      |defined by user                                        |
+|Summer Weekday Hour To Begin Storage Discharge              |Integer  |11             |ELCD                      |defined by user                                        |
+|Summer Weekday Hour To End Storage Discharge                |Integer  |20             |ELCD                      |defined by user                                        |
+|Summer Weekend Hour To Begin Storage Discharge              |Integer  |11             |ELCD                      |defined by user                                        |
+|Summer Weekend Hour To End Storage Discharge                |Integer  |20             |ELCD                      |defined by user                                        |
+|Design Storage Control Charge Power Per Battery             |kW       |1927           |ELCD                      |defined by user                                        |
+|Design Storage Control Discharge Power Per Battery          |kW       |1927           |ELCD                      |defined by user                                        |
+|Storage Control Utility Demand Target                       |kW       |450            |ELCD                      |defined by user                                        |
+|Minimum Storage State Of Charge Fraction                    |(0-1)    |0.05           |ELCD                      |defined by user                                        |
+|Maximum Storage State Of Charge Fraction                    |(0-1)    |0.96           |ELCD                      |defined by user                                        |
+ 
 
 ## 5) revit_create_typical_shw_systems_using_os_standards_gem
 
