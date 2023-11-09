@@ -3,7 +3,7 @@ This repository contains the Revit Projects, OpenStudio Measures and Revit Workf
 
 ## Table of Content 
 
-* [Revit Projects](#revit-projects)
+* [Revit File](#revit-file)
 * [OS Measures used by Revit Workflows](#os-measures-used-by-revit-workflows)
 * [Revit Workflow files](#revit-workflow-files)
 * [Useful Scripts](#useful-scripts)
@@ -18,7 +18,7 @@ Users attempting to recreate the work demonstrated during this AU class should e
 3. OpenStudio Application v1.4.0
 4. A text editor (Visual Studio Code, Notepad++, etc.)
 
-# Demonstration Revit Project
+# Revit File
 
 The Revit File **"Retail Big Box_Example.rvt"** was demonstrated during the course. This file can be found in the "Revit Files" directory of this repository. 
 
@@ -293,7 +293,7 @@ Allowable enumerations for 'Module Type' can be found in measure.rb lines (50-52
 This table shows the configuraton of the measure .csv file to model the performance of a 75 kW Fixed (Roof Mounted) South Facing PV System. 
 When the sun is ahining, the PV System will generate Power, which will offset electricity purchases. No energy will be stored. 
 
-|**Argument Name**                                           |**Units**|**Value**      |**System Component**      |
+|**Argument Name**                                           |**Units/Range**|**Value**      |**System Component**      |
 |------------------------------------------------------------|---------|---------------|--------------------------|
 |Max Power Output                                            |kW       |75             |PV                        |
 |Array Type                                                  |N/A      |OneAxis        |PV                        |
@@ -344,9 +344,9 @@ This table shows the configuraton of the measure .csv file to model the performa
 When the sun is ahining, the PV System will generate Power, which will offset electricity purchases. No energy will be stored. 
 
 The measure uses EnergyPlus "ElectricLoadCenter:Storage:LiIonNMCBattery" object to model battery performance.
-EnergPlus documentation for the LiIonNMCBattery object can be found {here](https://energyplus.net/assets/nrel_custom/pdfs/pdfs_v23.2.0/InputOutputReference.pdf).
+EnergPlus documentation for the LiIonNMCBattery object can be found here: https://energyplus.net/assets/nrel_custom/pdfs/pdfs_v23.2.0/InputOutputReference.pdf.
 
-|**Argument Name**                                           |**Units**|**Value**      |**System Component**      |
+|**Argument Name**                                           |**Units/Range**|**Value**      |**System Component**      |
 |------------------------------------------------------------|---------|---------------|--------------------------|
 |Max Power Output                                            |kW       |0.01             |PV                        |
 |Array Type                                                  |N/A      |OneAxis        |PV                        |
@@ -394,10 +394,38 @@ EnergPlus documentation for the LiIonNMCBattery object can be found {here](https
 
 ## 5) revit_create_typical_shw_systems_using_os_standards_gem
 
-# Revit Workflow files
+# Revit Workflow Files
 
-## Example 1 Annual Building Energy Simulation
+## "Example 1 Annual Building Energy Simulation.osw"
 
+This workflow generates a "Energy Analysis Report" by chaining together these measures into a new json .osw file. 
+Note the location that the OpenStudio measures are inserted. This .osw workflow file can be found in the /workflows section of this repository. 
+
+This workflow extends a 'default' Revit workflow by adding (3) new measures that will:
+
+- Add SHW loads and equipment to the Revit generated OpenStudio Model
+- Replace Revit generated HVAC systems with user-defined ALL Electric HVAC Systems, using the topology of existing Air Systems and Zone Equipment 
+- Apply a user-defined Tariff to monotize predicted energy usage.
+   
+
+  1. "Change Building Location"
+  2. "ImportGbxml"
+  3. "Advanced Import Gbxml"
+  4. "GBXML HVAC Import"
+  5. "Set Simulation Control"
+  6. "gbxml_to_openstudio_cleanup"
+  7  "Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem" (1)
+  8  "revit_analyze_all_electric_hvac_systems" *(1)
+  9. "Add XML Output Control Style"
+  10. "revit_analyze_electric_tariff" (2)
+  11. "OpenStudio Results"
+  12. "Systems Analysis Report"
+ 
+ (1) OpenStudio Measure
+ (2) EnergyPlus Measure
+  
+Once created, the .osw file should be placed in the users directory 
+  
 ## Example 1 HVAC Systems Loads and Sizing
 
 ## Example 2 Annual Building Energy Simulation
