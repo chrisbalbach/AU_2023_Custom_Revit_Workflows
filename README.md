@@ -30,7 +30,7 @@ New "Air Systems" and "Zone Equipment" objects and connections to Analytical Spa
 
 # OS Measures used by Revit Workflows
 
-The following OpenStudio measures are included in this repository. These measures can be downloaded, edited, and used to create custom OS Based workflows, in Revit. 
+The following OpenStudio measures are included in this repository. Users can downloaded and edit these measures to create custom OS workflows, in Revit. 
 
 1. "revit_analyze_all_electric_hvac_systems" 
 2. "revit_analyze_electric_tariff"
