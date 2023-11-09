@@ -1,0 +1,9 @@
+﻿Argument Name,Value,Source of Value
+space_baseline_mapping_csv_file_name,Retail_Big_Box_Space_Baseline_Mappings.csv,user provided
+os_standards_baseline_template,90.1-2013,see measure.rb lines (31-37)
+os_standards_baseline_building_type,RetailStandalone,see measure.rb lines (45-59)
+climate_zone,ASHRAE 169-2013-4A,see measure.rb lines (147-161)
+debug,TRUE,set to TRUE for debugging else set to FALSE
+os_standards_baseline_hvac_building_type,other nonresidential,see measure.rb lines (66-73) Only needed for 90.1-2016 and beyond
+os_standards_baseline_wwr_building_type,"Office 5,000 to 50,000 sq ft",see measure.rb lines (80-96) Only needed for 90.1-2016 and beyond
+os_standards_baseline_shw_building_type,Office,see measure.rb lines (103-139) Only needed for 90.1-2016 and beyond

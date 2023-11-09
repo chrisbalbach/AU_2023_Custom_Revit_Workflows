@@ -1,0 +1,41 @@
+﻿Argument Name,Value,Type,Units,Source of Value
+HVAC Equipment Efficiency Standard,90.1-2013,Choice List,,measure.rb lines (1005 - 1010)
+airloop_hvac_system_type,Heat Recovery VRF with DOAS with ERV,Choice List,,"Used if ""HVAC System Zone Partitioning Strategy"" ==  ""Use Analytical Systems Topology"" - see measure.rb lines (1029 - 1051)"
+zone_equipment_hvac_system_type,PTHP with ERV,Choice List,,"Used if ""HVAC System Zone Partitioning Strategy"" ==  ""Use Analytical Systems Topology"" - see measure.rb lines (1056 - 1123)"
+climate_zone,ASHRAE 169-2006-4A,Choice List,,measure.rb lines (1122 - 1136)
+VRF Outdoor Unit Rated Htg COP at 47F,3.9,Double,unitless,"Provided by user, if ==  0 will use value from ASHRAE 90.1 "
+VRF Outdoor Unit Gross Rated Clg EER,12,Double,Btu/Watt,"Provided by user, if ==  0 will use value from ASHRAE 90.1 "
+VRF Indoor Unit Supply Fan Pressure Rise,0.3,Double,inches of H2O,"Provided by user, if ==  0 will use value from ASHRAE 90.1 "
+Air Cooled Chiller Primary Loop Pump Rated Head,55.5,Double,ft of H2O,"Provided by user, if ==  0 will use value from Standards Gem/90.1"
+Air Cooled Chiller Rated COP,6.18,Double,unitless,"Provided by user, if ==  0 will use value from ASHRAE 90.1 "
+Central Air Source Heat Pump HVAC System Rated Clg COP Override ,N/A,,,Ignored by current measure
+Central Air Source Heat Pump HVAC System Rated Htg COP Override ,N/A,,,Ignored by current measure
+DOAS System OA Path / EA Path Pressure Drop (inches H2O),N/A,,,Ignored by current measure
+Zone ERV OA Path / EA Path Pressure Drop (inches H2O),N/A,,,Ignored by current measure
+DOAS / ERV Sensible Effecitiveness at 100% Heating Airflow Override,0.85,,,Ignored by current measure
+DOAS / ERV Latent Effecitiveness at 100% Heating Airflow Override,0.82,,,Ignored by current measure
+DOAS / ERV Sensible Effecitiveness at 100% Cooling Airflow Override,0.76,,,Ignored by current measure
+DOAS / ERV Latent Effecitiveness at 100% Cooling Airflow Override,0.74,,,Ignored by current measure
+Electric Boiler Htg Plant Loop Rated Pump Head Override (ft of H2O),45,,ft of H2O,Ignored by current measure
+Fan Coil HVAC System Supply Fan Pressure Rise Override (inches H2O),0.75,,,Ignored by current measure
+Ground Source Heat Pump Rated Clg COP Override,N/A,,,Ignored by current measure
+Ground Source Heat Pump Rated Htg COP Override,N/A,,,Ignored by current measure
+PSZ-HP HVAC System Supply Fan Pressure Rise Override (inches H2O),1.9,,,Ignored by current measure
+PSZ-HP HVAC System DX Clg Coil EER Override,N/A,,,Ignored by current measure
+PSZ-HP HVAC System DX Htg Coil HSPF Override,N/A,,,Ignored by current measure
+PSZ-AC HVAC System Supply Fan Pressure Rise Override (inches H2O),1.95,,,Ignored by current measure
+PSZ-AC HVAC System DX Clg Coil EER Override,N/A,,,Ignored by current measure
+PTAC HVAC System Supply Fan Pressure Rise Override (inches H2O),0.35,,,Ignored by current measure
+PTAC DX Clg Coil EER Override,N/A,,,Ignored by current measure
+PTHP HVAC System Supply Fan Pressure Rise Override (inches H2O),0.37,,,Ignored by current measure
+PTHP DX Clg Coil EER Override,N/A,,,Ignored by current measure
+PTHP DX Htg Coil HSPF Override,N/A,,,Ignored by current measure
+Residential Minisplit Heat Pump Supply Fan Pressure Rise Override (inches H2O),0.1,,,Ignored by current measure
+Residential Minisplit Heat Pump HVAC System DX Clg Coil EER Override,N/A,,,Ignored by current measure
+Residential Minisplit Heat Pump HVAC System DX Htg Coil HSPF Override,N/A,,,Ignored by current measure
+Water Cooled Chiller Clg Plant Loop Rated Pump Head Override (ft of H2O),53,,,Ignored by current measure
+Water Cooled Chiller Condenser Plant Loop Rated Pump Head Override (ft of H2O),100,,,Ignored by current measure
+Water Cooled Chiller Rated COP Override ,N/A,,,Ignored by current measure
+WLHP Condenser Plant Loop Rated Pump Head Override (ft of H2O),75,,,Ignored by current measure
+Water Source Heat Pump Rated Clg COP Override,N/A,,,Ignored by current measure
+Water Source Heat Pump Rated Htg COP Override,N/A,,,Ignored by current measure
