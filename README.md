@@ -86,9 +86,9 @@ for both a electricity supplier and an electricity tranmission and distribution 
 The .csv file for configuring this measure is named "Electric_Utility_Tariff_Arguments.csv", and it is located in the /resources directory of the 
 measure. Values should be provided in column B of the .csv file, for **Row 2 through Row 65**. 
 
-For all Rows, Column E of the .csv file describes the allowable enumarations. 
+Allowable enumerations for 'demand_window_length' can be found in measure.rb lines (1218 - 1222). 
 
-#### example csv file #1 Simple Tariff
+#### example csv file #1: Simple Tariff
 
 This table shows the configuraton of the .csv file for a **flat energy tariff of $0.15 / kWh**. 
 
@@ -97,73 +97,169 @@ This table shows the configuraton of the .csv file for a **flat energy tariff of
 * No seasonal (summer/nonsummer) charges are modeled.
 * A single supplier tariff is modeled (**all** energy cost values associated with the T&D Tariff are zero).
 
-|**Argument Name**                             |**Value**    |**Type**|**Units** |**Source of Value**                                                                                   |**Element Category**         |**Required/Optional**|
-|----------------------------------------------|-------------|-------|-----------|------------------------------------------------------------------------------------------------------|-----------------------------|---Required--------------|
-|tariff_name                                   |Simple Tariff|       |N/A        |user defined                                                                                          |General Info                 |Required         |
-|demand_window_length                          |QuarterHour  |String |N/A        |measure.rb lines (1218 - 1222)                                                                        |General Info                 | Required                |
-|summer_start_month                            |5            |Integer|month      |user defined                                                                                          |General Info                 |Required                 |
-|summer_start_day                              |15           |Integer|day        |user defined                                                                                          |General Info                 |Required                 |
-|summer_end_month                              |9            |Integer|month      |user defined                                                                                          |General Info                 |Required                |
-|summer_end_day                                |15           |Integer|day        |user defined                                                                                          |General Info                 |Required                 |
-|peak_start_hour                               |12           |Integer|hour of day|user defined                                                                                          |General Info                 |Required                |
-|peak_end_hour                                 |18           |Integer|hour of day|user defined                                                                                          |General Info                 |Required                 |
-|supply_elec_rate_sum_peak                     |0.15         |Double |$/kWh      |user defined                                                                                          |Supplier                     |                 |
-|supply_elec_rate_sum_nonpeak                  |0.15         |Double |$/kWh      |user defined                                                                                          |Supplier                     |                 |
-|supply_elec_rate_nonsum_peak                  |0.15         |Double |$/kWh      |user defined                                                                                          |Supplier                     |                 |
-|supply_elec_rate_nonsum_nonpeak               |0.15         |Double |$/kWh      |user defined                                                                                          |Supplier                     |                 |
-|supply_elec_demand_sum                        |0            |Double |$/kW       |user defined                                                                                          |Supplier                     |                 |
-|supply_elec_demand_nonsum                     |0            |Double |$/kW       |user defined                                                                                          |Supplier                     |                 |
-|supply_monthly_charge                         |0            |Double |$          |user defined                                                                                          |Supplier                     |                 |
-|supply_qualifying_min_monthly_demand          |1            |Double |kW         |user defined                                                                                          |Supplier                     |                 |
-|supply_summer_elec_block_1_size               |30000        |Double |kWh        |user defined                                                                                          |Supplier                     |                 |
-|supply_summer_elec_block_1_cost_per_kwh       |0.15         |Double |$/kWh      |user defined                                                                                          |Supplier                     |                 |
-|supply_summer_elec_block_2_size               |50000        |Double |kWh        |user defined                                                                                          |Supplier                     |                 |
-|supply_summer_elec_block_2_cost_per_kwh       |0.15         |Double |$/kWh      |user defined                                                                                          |Supplier                     |                 |
-|supply_summer_elec_remaining_cost_per_kwh     |0.15         |Double |$/kWh      |user defined                                                                                          |Supplier                     |                 |
-|supply_winter_elec_block_1_size               |30000        |Double |kWh        |user defined                                                                                          |Supplier                     |                 |
-|supply_winter_elec_block_1_cost_per_kwh       |0.15         |Double |$/kWh      |user defined                                                                                          |Supplier                     |                 |
-|supply_winter_elec_block_2_size               |50000        |Double |kWh        |user defined                                                                                          |Supplier                     |                 |
-|supply_winter_elec_block_2_cost_per_kwh       |0.15         |Double |$/kWh      |user defined                                                                                          |Supplier                     |                 |
-|supply_winter_elec_remaining_cost_per_kwh     |0.15         |Double |$/kWh      |user defined                                                                                          |Supplier                     |                 |
-|supply_summer_elec_demand_block_1_size        |0            |Double |kW         |user defined                                                                                          |Supplier                     |                 |
-|supply_summer_elec_demand_block_1_cost_per_kw |0            |Double |$/kW       |user defined                                                                                          |Supplier                     |                 |
-|supply_summer_elec_demand_block_2_size        |0            |Double |kW         |user defined                                                                                          |Supplier                     |                 |
-|supply_summer_elec_demand_block_2_cost_per_kw |0            |Double |$/kW       |user defined                                                                                          |Supplier                     |                 |
-|supply_summer_elec_remaining_cost_per_kw      |0            |Double |$/kW       |user defined                                                                                          |Supplier                     |                 |
-|supply_winter_elec_demand_block_1_size        |0            |Double |kW         |user defined                                                                                          |Supplier                     |                 |
-|supply_winter_elec_demand_block_1_cost_per_kw |0            |Double |$/kW       |user defined                                                                                          |Supplier                     |                 |
-|supply_winter_elec_demand_block_2_size        |0            |Double |kW         |user defined                                                                                          |Supplier                     |                 |
-|supply_winter_elec_demand_block_2_cost_per_kw |0            |Double |$/kW       |user defined                                                                                          |Supplier                     |                 |
-|supply_winter_elec_remaining_cost_per_kw      |0            |Double |$/kW       |user defined                                                                                          |Supplier                     |                 |
-|t_and_d_elec_rate_sum_peak                    |0            |Double |$/kWh      |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_elec_rate_sum_nonpeak                 |0            |Double |$/kWh      |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_elec_rate_nonsum_peak                 |0            |Double |$/kWh      |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_elec_rate_nonsum_nonpeak              |0            |Double |$/kWh      |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_elec_demand_sum                       |0            |Double |$/kW       |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_elec_demand_nonsum                    |0            |Double |$/kW       |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_monthly_charge                        |0            |Double |$          |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_qualifying_min_monthly_demand         |0            |Double |kW         |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_summer_elec_block_1_size              |30000        |Double |kWh        |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_summer_elec_block_1_cost_per_kwh      |0            |Double |$/kWh      |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_summer_elec_block_2_size              |50000        |Double |kWh        |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_summer_elec_block_2_cost_per_kwh      |0            |Double |$/kWh      |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_summer_elec_remaining_cost_per_kwh    |0            |Double |$/kWh      |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_winter_elec_block_1_size              |30000        |Double |kWh        |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_winter_elec_block_1_cost_per_kwh      |0            |Double |$/kWh      |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_winter_elec_block_2_size              |50000        |Double |kWh        |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_winter_elec_block_2_cost_per_kwh      |0            |Double |$/kWh      |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_winter_elec_remaining_cost_per_kwh    |5.3          |Double |$/kWh      |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_summer_elec_demand_block_1_size       |10           |Double |kW         |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_summer_elec_demand_block_1_cost_per_kw|0            |Double |$/kW       |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_summer_elec_demand_block_2_size       |50           |Double |kW         |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_summer_elec_demand_block_2_cost_per_kw|0            |Double |$/kW       |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_summer_elec_remaining_cost_per_kw     |0            |Double |$/kW       |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_winter_elec_demand_block_1_size       |10           |Double |kW         |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_winter_elec_demand_block_1_cost_per_kw|0            |Double |$/kW       |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_winter_elec_demand_block_2_size       |0            |Double |kW         |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_winter_elec_demand_block_2_cost_per_kw|0            |Double |$/kW       |user defined                                                                                          |Transmission and Distribution|                 |
-|t_and_d_winter_elec_remaining_cost_per_kw     |0            |Double |$/kW       |user defined                                                                                          |Transmission and Distribution|                 |
+|**Argument Name**                             |**Value**    |**Type**|**Units** |**Element Category**         |
+|----------------------------------------------|-------------|-------|-----------|-----------------------------|
+|tariff_name                                   |Simple Tariff|       |N/A        |General Info                 |
+|demand_window_length                          |QuarterHour  |String |N/A        |General Info                 |
+|summer_start_month                            |5            |Integer|month      |General Info                 |
+|summer_start_day                              |15           |Integer|day        |General Info                 |
+|summer_end_month                              |9            |Integer|month      |General Info                 |
+|summer_end_day                                |15           |Integer|day        |General Info                 |
+|peak_start_hour                               |12           |Integer|hour of day|General Info                 |
+|peak_end_hour                                 |18           |Integer|hour of day|General Info                 |
+|supply_elec_rate_sum_peak                     |0.15         |Double |$/kWh      |Supplier                     |
+|supply_elec_rate_sum_nonpeak                  |0.15         |Double |$/kWh      |Supplier                     |
+|supply_elec_rate_nonsum_peak                  |0.15         |Double |$/kWh      |Supplier                     |
+|supply_elec_rate_nonsum_nonpeak               |0.15         |Double |$/kWh      |Supplier                     |
+|supply_elec_demand_sum                        |0            |Double |$/kW       |Supplier                     |
+|supply_elec_demand_nonsum                     |0            |Double |$/kW       |Supplier                     |
+|supply_monthly_charge                         |0            |Double |$          |Supplier                     |
+|supply_qualifying_min_monthly_demand          |1            |Double |kW         |Supplier                     |
+|supply_summer_elec_block_1_size               |30000        |Double |kWh        |Supplier                     |
+|supply_summer_elec_block_1_cost_per_kwh       |0.15         |Double |$/kWh      |Supplier                     |
+|supply_summer_elec_block_2_size               |50000        |Double |kWh        |Supplier                     |
+|supply_summer_elec_block_2_cost_per_kwh       |0.15         |Double |$/kWh      |Supplier                     |
+|supply_summer_elec_remaining_cost_per_kwh     |0.15         |Double |$/kWh      |Supplier                     |
+|supply_winter_elec_block_1_size               |30000        |Double |kWh        |Supplier                     |
+|supply_winter_elec_block_1_cost_per_kwh       |0.15         |Double |$/kWh      |Supplier                     |
+|supply_winter_elec_block_2_size               |50000        |Double |kWh        |Supplier                     |
+|supply_winter_elec_block_2_cost_per_kwh       |0.15         |Double |$/kWh      |Supplier                     |
+|supply_winter_elec_remaining_cost_per_kwh     |0.15         |Double |$/kWh      |Supplier                     |
+|supply_summer_elec_demand_block_1_size        |0            |Double |kW         |Supplier                     |
+|supply_summer_elec_demand_block_1_cost_per_kw |0            |Double |$/kW       |Supplier                     |
+|supply_summer_elec_demand_block_2_size        |0            |Double |kW         |Supplier                     |
+|supply_summer_elec_demand_block_2_cost_per_kw |0            |Double |$/kW       |Supplier                     |
+|supply_summer_elec_remaining_cost_per_kw      |0            |Double |$/kW       |Supplier                     |
+|supply_winter_elec_demand_block_1_size        |0            |Double |kW         |Supplier                     |
+|supply_winter_elec_demand_block_1_cost_per_kw |0            |Double |$/kW       |Supplier                     |
+|supply_winter_elec_demand_block_2_size        |0            |Double |kW         |Supplier                     |
+|supply_winter_elec_demand_block_2_cost_per_kw |0            |Double |$/kW       |Supplier                     |
+|supply_winter_elec_remaining_cost_per_kw      |0            |Double |$/kW       |Supplier                     |
+|t_and_d_elec_rate_sum_peak                    |0            |Double |$/kWh      |T & D|
+|t_and_d_elec_rate_sum_nonpeak                 |0            |Double |$/kWh      |T & D|
+|t_and_d_elec_rate_nonsum_peak                 |0            |Double |$/kWh      |T & D|
+|t_and_d_elec_rate_nonsum_nonpeak              |0            |Double |$/kWh      |T & D|                 
+|t_and_d_elec_demand_sum                       |0            |Double |$/kW       |T & D|
+|t_and_d_elec_demand_nonsum                    |0            |Double |$/kW       |T & D|
+|t_and_d_monthly_charge                        |0            |Double |$          |T & D|
+|t_and_d_qualifying_min_monthly_demand         |0            |Double |kW         |T & D|
+|t_and_d_summer_elec_block_1_size              |30000        |Double |kWh        |T & D|
+|t_and_d_summer_elec_block_1_cost_per_kwh      |0            |Double |$/kWh      |T & D|
+|t_and_d_summer_elec_block_2_size              |50000        |Double |kWh        |T & D|
+|t_and_d_summer_elec_block_2_cost_per_kwh      |0            |Double |$/kWh      |T & D|
+|t_and_d_summer_elec_remaining_cost_per_kwh    |0            |Double |$/kWh      |T & D|
+|t_and_d_winter_elec_block_1_size              |30000        |Double |kWh        |T & D|
+|t_and_d_winter_elec_block_1_cost_per_kwh      |0            |Double |$/kWh      |T & D|
+|t_and_d_winter_elec_block_2_size              |50000        |Double |kWh        |T & D|
+|t_and_d_winter_elec_block_2_cost_per_kwh      |0            |Double |$/kWh      |T & D|
+|t_and_d_winter_elec_remaining_cost_per_kwh    |5.3          |Double |$/kWh      |T & D|
+|t_and_d_summer_elec_demand_block_1_size       |10           |Double |kW         |T & D|
+|t_and_d_summer_elec_demand_block_1_cost_per_kw|0            |Double |$/kW       |T & D
+|t_and_d_summer_elec_demand_block_2_size       |50           |Double |kW         |T & D|
+|t_and_d_summer_elec_demand_block_2_cost_per_kw|0            |Double |$/kW       |T & D|
+|t_and_d_summer_elec_remaining_cost_per_kw     |0            |Double |$/kW       |T & D|
+|t_and_d_winter_elec_demand_block_1_size       |10           |Double |kW         |T & D|
+|t_and_d_winter_elec_demand_block_1_cost_per_kw|0            |Double |$/kW       |T & D|
+|t_and_d_winter_elec_demand_block_2_size       |0            |Double |kW         |T & D|
+|t_and_d_winter_elec_demand_block_2_cost_per_kw|0            |Double |$/kW       |T & D|
+|t_and_d_winter_elec_remaining_cost_per_kw     |0            |Double |$/kW       |T & D|
 
+
+#### example csv file #2: Complex Tariff
+
+This table shows the configuraton of the .csv file for a **complex energy tariff**. 
+
+* A 'Summer' season occurs between June 15 - September 15. The Non-Summer season includes all other days.   
+* A 'Summer' on-peak' period occurs between 3:00PM and 6:00PM
+* The Electric Supplier charges an Energy rate of $0.125/kWh during Summer Peak Hours $0.181/kWh during Summer Non-Peak Hours
+* The Electric Supplier charges an Energy rate of $0.103/kWh during Non-Summer Peak Hours $0.072/kWh during Non-Summer Non-Peak Hours
+* The Electric Supplier charges an Demand rate of $2.48/kW during Summer Hours and $1.59/kW during Non-Summer Hours
+* The Electric Supplier charges a fixed amount of $13.543 per Monthly billing period
+* The Electric Supplier has no minimum monthly demand for the tariff.
+* The During the Summer Period, The Electric Supplier uses this cumulative block structure for determining additional energy charges for each billing period
+    - $0.082/kWh for the First 10,000 kWh
+    - $0.072/kWh for the Next 10,000 kWh
+    - $0.062/kWh for all remaining kWh
+* The During the Non-Summer Period, The Electric Supplier uses this cumulative block structure for determining additional energy charges for each billing period
+    - $0.062/kWh for the First 10,000 kWh
+    - $0.052/kWh for the Next 10,000 kWh
+    - $0.042/kWh for all remaining kWh
+* The During the Summer Period, The Electric Supplier uses this cumulative block structure for determining additional power charges for each billing period
+    - $6.45/kW for the First 50 kW
+    - $7.12/kW for the Next 100 kW
+    - $9.21/kW for all remaining kW
+* The During the Summer Period, The Electric Supplier uses this cumulative block structure for determining additional power charges for each billing period
+    - $3.45/kW for the First 50 kW
+    - $4.12/kW for the Next 100 kW
+    - $5.21/kW for all remaining kW
+* No Transmission and Disrribution Provider is used.
+
+|**Argument Name**                             |**Value**    |**Type**|**Units** |**Element Category**         |
+|----------------------------------------------|-------------|-------|-----------|-----------------------------|
+|tariff_name                                   |Simple Tariff|       |N/A        |General Info                 |
+|demand_window_length                          |QuarterHour  |String |N/A        |General Info                 |
+|summer_start_month                            |6            |Integer|month      |General Info                 |
+|summer_start_day                              |15           |Integer|day        |General Info                 |
+|summer_end_month                              |9            |Integer|month      |General Info                 |
+|summer_end_day                                |15           |Integer|day        |General Info                 |
+|peak_start_hour                               |15           |Integer|hour of day|General Info                 |
+|peak_end_hour                                 |18           |Integer|hour of day|General Info                 |
+|supply_elec_rate_sum_peak                     |0.125        |Double |$/kWh      |Supplier                     |
+|supply_elec_rate_sum_nonpeak                  |0.181        |Double |$/kWh      |Supplier                     |
+|supply_elec_rate_nonsum_peak                  |0.103         |Double |$/kWh      |Supplier                     |
+|supply_elec_rate_nonsum_nonpeak               |0.072         |Double |$/kWh      |Supplier                     |
+|supply_elec_demand_sum                        |2.48           |Double |$/kW       |Supplier                     |
+|supply_elec_demand_nonsum                     |1.59            |Double |$/kW       |Supplier                     |
+|supply_monthly_charge                         |13.5430            |Double |$          |Supplier                     |
+|supply_qualifying_min_monthly_demand          |1            |Double |kW         |Supplier                     |
+|supply_summer_elec_block_1_size               |10000        |Double |kWh        |Supplier                     |
+|supply_summer_elec_block_1_cost_per_kwh       |0.082         |Double |$/kWh      |Supplier                     |
+|supply_summer_elec_block_2_size               |20000        |Double |kWh        |Supplier                     |
+|supply_summer_elec_block_2_cost_per_kwh       |0.072        |Double |$/kWh      |Supplier                     |
+|supply_summer_elec_remaining_cost_per_kwh     |0.062         |Double |$/kWh      |Supplier                     |
+|supply_winter_elec_block_1_size               |10000        |Double |kWh        |Supplier                     |
+|supply_winter_elec_block_1_cost_per_kwh       |0.062         |Double |$/kWh      |Supplier                     |
+|supply_winter_elec_block_2_size               |20000        |Double |kWh        |Supplier                     |
+|supply_winter_elec_block_2_cost_per_kwh       |0.052         |Double |$/kWh      |Supplier                     |
+|supply_winter_elec_remaining_cost_per_kwh     |0.042         |Double |$/kWh      |Supplier                     |
+|supply_summer_elec_demand_block_1_size        |50            |Double |kW         |Supplier                     |
+|supply_summer_elec_demand_block_1_cost_per_kw |6.45            |Double |$/kW       |Supplier                     |
+|supply_summer_elec_demand_block_2_size        |100            |Double |kW         |Supplier                     |
+|supply_summer_elec_demand_block_2_cost_per_kw |7.12            |Double |$/kW       |Supplier                     |
+|supply_summer_elec_remaining_cost_per_kw      |9.21            |Double |$/kW       |Supplier                     |
+|supply_winter_elec_demand_block_1_size        |50            |Double |kW         |Supplier                     |
+|supply_winter_elec_demand_block_1_cost_per_kw |3.45            |Double |$/kW       |Supplier                     |
+|supply_winter_elec_demand_block_2_size        |100            |Double |kW         |Supplier                     |
+|supply_winter_elec_demand_block_2_cost_per_kw |4.12            |Double |$/kW       |Supplier                     |
+|supply_winter_elec_remaining_cost_per_kw      |5.21           |Double |$/kW       |Supplier                     |
+|t_and_d_elec_rate_sum_peak                    |0            |Double |$/kWh      |T & D|
+|t_and_d_elec_rate_sum_nonpeak                 |0            |Double |$/kWh      |T & D|
+|t_and_d_elec_rate_nonsum_peak                 |0            |Double |$/kWh      |T & D|
+|t_and_d_elec_rate_nonsum_nonpeak              |0            |Double |$/kWh      |T & D|                 
+|t_and_d_elec_demand_sum                       |0            |Double |$/kW       |T & D|
+|t_and_d_elec_demand_nonsum                    |0            |Double |$/kW       |T & D|
+|t_and_d_monthly_charge                        |0            |Double |$          |T & D|
+|t_and_d_qualifying_min_monthly_demand         |0            |Double |kW         |T & D|
+|t_and_d_summer_elec_block_1_size              |30000        |Double |kWh        |T & D|
+|t_and_d_summer_elec_block_1_cost_per_kwh      |0            |Double |$/kWh      |T & D|
+|t_and_d_summer_elec_block_2_size              |50000        |Double |kWh        |T & D|
+|t_and_d_summer_elec_block_2_cost_per_kwh      |0            |Double |$/kWh      |T & D|
+|t_and_d_summer_elec_remaining_cost_per_kwh    |0            |Double |$/kWh      |T & D|
+|t_and_d_winter_elec_block_1_size              |30000        |Double |kWh        |T & D|
+|t_and_d_winter_elec_block_1_cost_per_kwh      |0            |Double |$/kWh      |T & D|
+|t_and_d_winter_elec_block_2_size              |50000        |Double |kWh        |T & D|
+|t_and_d_winter_elec_block_2_cost_per_kwh      |0            |Double |$/kWh      |T & D|
+|t_and_d_winter_elec_remaining_cost_per_kwh    |5.3          |Double |$/kWh      |T & D|
+|t_and_d_summer_elec_demand_block_1_size       |10           |Double |kW         |T & D|
+|t_and_d_summer_elec_demand_block_1_cost_per_kw|0            |Double |$/kW       |T & D
+|t_and_d_summer_elec_demand_block_2_size       |50           |Double |kW         |T & D|
+|t_and_d_summer_elec_demand_block_2_cost_per_kw|0            |Double |$/kW       |T & D|
+|t_and_d_summer_elec_remaining_cost_per_kw     |0            |Double |$/kW       |T & D|
+|t_and_d_winter_elec_demand_block_1_size       |10           |Double |kW         |T & D|
+|t_and_d_winter_elec_demand_block_1_cost_per_kw|0            |Double |$/kW       |T & D|
+|t_and_d_winter_elec_demand_block_2_size       |0            |Double |kW         |T & D|
+|t_and_d_winter_elec_demand_block_2_cost_per_kw|0            |Double |$/kW       |T & D|
+|t_and_d_winter_elec_remaining_cost_per_kw     |0            |Double |$/kW       |T & D|
 
 
 ## Measure #3 "revit_create_baseline_building"
@@ -175,60 +271,126 @@ configurable PV System, a configurable Lithium Ion Battery Bank, and a configura
 The measure **adds new** objects for these components, based on user-defined parameters. The Standard EnergyPlus Output report can be viewed 
 from within Revit, to show the annual energy and peak power impacts of the BES. 
 
-The measure can be used to model a 'Storage Only" scenario by specifying a PV System with a very small value  for the PV 'Max Power Output' variable (for example, 0.1 kW).
-The measure can be used to model a 'PV Only" scenario by specifying a Battery System with a very small value Battery 'Usable Capacity' variable (for example, 0.1 kW).
-'Matched' BES systems (PV + PowerWall, PV + PowerPack, etc.) can be modeled by carefully defining PV System and BES properties.
-
 This measure is often combined with the OpenStudo Tariff measure into custom Revit Workflows for evaluating BES arbitrage opportunities for facilities with known periods of high cost 
 seasonal and time-of-day tariffs. The BES system is desinged to offset 'purchased' electricity demands when it is most expensive (on-peak periods), leveraging the PV/BES to and 
 meet facilty energy demands.
 
-#### csv file #1 revit_add_pv_add_storage_tou: "PV_Battery_Inputs.csv"
+The measure .csv file can be configured to model a 'Storage Only" scenario by specifying a PV System with a very small value  for the PV 'Max Power Output' variable (for example, 0.1 kW).
+The measure .csv file can be configured to model a 'PV Only" scenario by specifying a Battery System with a very small value Battery 'Usable Capacity' variable (for example, 0.1 kW).
+'Matched' BES systems (PV + PowerWall, PV + PowerPack, etc.) can be modeled by carefully configuring the .csv file to defining both a PV System and BES properties.
 
-|**Argument Name**                                           |**Units**|**Value**      |**System Component**      |**Source of Value**                                    |
-|------------------------------------------------------------|---------|---------------|--------------------------|-------------------------------------------------------|
-|Max Power Output                                            |kW       |30             |PV                        |defined by user                                        |
-|Array Type                                                  |N/A      |OneAxis        |PV                        |See measure.rb lines (36-40) for allowable enumerations|
-|Module Type                                                 |N/A      |Premium        |PV                        |See measure.rb lines (50-52) for allowable enumerations|
-|System Losses Fraction                                      |(0 - 100)|17             |PV                        |defined by user                                        |
-|Array Tilt                                                  |Degrees  |30             |PV                        |defined by user                                        |
-|Array Azimuth                                               |Degrees  |270            |PV                        |defined by user                                        |
-|Ground Coverage Ratio                                       |(0 - 100)|35             |PV                        |defined by user                                        |
-|Inverter Efficiency                                         |(0-1)    |0.96           |Inverter                  |defined by user                                        |
-|DC to AC Size Ratio                                         |N/A      |1.1            |Inverter                  |defined by user                                        |
-|Converter Simple Fixed Efficiency                           |(0-1)    |0.94           |Converter                 |defined by user                                        |
-|Converter Ancillary Power Consumed In Standby               |W        |100            |Converter                 |defined by user                                        |
-|Converter Radiative Fraction                                |(0-1)    |0.25           |Converter                 |defined by user                                        |
-|Battery Make Model                                          |N/A      |Tesla PowerWall|Storage/Inverter/Converter|defined by user                                        |
-|Nominal Capacity                                            |kWh      |10             |Storage                   |defined by user                                        |
-|Usable Capacity                                             |kWh      |9.5            |Storage                   |defined by user                                        |
-|Rated Power Output                                          |kW       |5              |Storage                   |defined by user                                        |
-|Nominal Voltage                                             |V        |50             |Storage                   |defined by user                                        |
-|Round Trip Efficiency                                       |(0-1)    |0.95           |Storage                   |defined by user                                        |
-|Minimum State Of Charge Fraction                            |(0-1)    |0.1            |Storage                   |defined by user                                        |
-|Maximum State Of Charge Fraction                            |(0-1)    |0.97           |Storage                   |defined by user                                        |
-|Lifetime Model                                              |N/A      |KandlerSmith   |Storage                   |defined by user                                        |
-|Initial Fraction State of Charge                            |(0-1)    |0.95           |Storage                   |defined by user                                        |
-|Percentage of Maximum Charge Power to use for Charging      |fraction |0.8            |ELCD                      |defined by user                                        |
-|Percentage of Maximum Discharge Power to use for Discharging|fraction |0.95           |ELCD                      |defined by user                                        |
-|Summer Month to Begin Storage Season                        |Integer  |3              |ELCD                      |defined by user                                        |
-|Summer Day to Begin Storage Season                          |Integer  |1              |ELCD                      |defined by user                                        |
-|Summer Month to End Storage Season                          |Integer  |9              |ELCD                      |defined by user                                        |
-|Summer Day to End Storage Season                            |Integer  |15             |ELCD                      |defined by user                                        |
-|Winter Weekday Hour To Begin Storage Discharge              |Integer  |9              |ELCD                      |defined by user                                        |
-|Winter Weekday Hour To End Storage Discharge                |Integer  |22             |ELCD                      |defined by user                                        |
-|Winter Weekend Hour To Begin Storage Discharge              |Integer  |9              |ELCD                      |defined by user                                        |
-|Winter Weekend Hour To End Storage Discharge                |Integer  |22             |ELCD                      |defined by user                                        |
-|Summer Weekday Hour To Begin Storage Discharge              |Integer  |11             |ELCD                      |defined by user                                        |
-|Summer Weekday Hour To End Storage Discharge                |Integer  |20             |ELCD                      |defined by user                                        |
-|Summer Weekend Hour To Begin Storage Discharge              |Integer  |11             |ELCD                      |defined by user                                        |
-|Summer Weekend Hour To End Storage Discharge                |Integer  |20             |ELCD                      |defined by user                                        |
-|Design Storage Control Charge Power Per Battery             |kW       |1927           |ELCD                      |defined by user                                        |
-|Design Storage Control Discharge Power Per Battery          |kW       |1927           |ELCD                      |defined by user                                        |
-|Storage Control Utility Demand Target                       |kW       |450            |ELCD                      |defined by user                                        |
-|Minimum Storage State Of Charge Fraction                    |(0-1)    |0.05           |ELCD                      |defined by user                                        |
-|Maximum Storage State Of Charge Fraction                    |(0-1)    |0.96           |ELCD                      |defined by user                                        |
+### csv file #1: "PV_Battery_Inputs.csv"
+
+
+The .csv file for configuring this measure is named "PV_Battery_Inputs.csv", and it is located in the /resources directory of the 
+measure. Values should be provided in column B of the .csv file, for **Row 2 through Row 42**. 
+
+Allowable enumerations for 'Array Type' can be found in measure.rb lines (36-40). 
+Allowable enumerations for 'Module Type' can be found in measure.rb lines (50-52). 
+
+#### Example csv file #1: Model PV System Only
+
+This table shows the configuraton of the measure .csv file to model the performance of a 75 kW Fixed (Roof Mounted) South Facing PV System. 
+When the sun is ahining, the PV System will generate Power, which will offset electricity purchases. No energy will be stored. 
+
+|**Argument Name**                                           |**Units**|**Value**      |**System Component**      |
+|------------------------------------------------------------|---------|---------------|--------------------------|
+|Max Power Output                                            |kW       |75             |PV                        |
+|Array Type                                                  |N/A      |OneAxis        |PV                        |
+|Module Type                                                 |N/A      |Premium        |PV                        |
+|System Losses Fraction                                      |(0 - 100)|17             |PV                        |
+|Array Tilt                                                  |Degrees  |30             |PV                        |
+|Array Azimuth                                               |Degrees  |180            |PV                        |
+|Ground Coverage Ratio                                       |(0 - 100)|35             |PV                        |
+|Inverter Efficiency                                         |(0-1)    |0.96           |Inverter                  |
+|DC to AC Size Ratio                                         |N/A      |1.1            |Inverter                  |
+|Converter Simple Fixed Efficiency                           |(0-1)    |0.94           |Converter                 |
+|Converter Ancillary Power Consumed In Standby               |W        |100            |Converter                 |
+|Converter Radiative Fraction                                |(0-1)    |0.25           |Converter                 |
+|Battery Make Model                                          |N/A      |<empty>        |
+|Nominal Capacity                                            |kWh      |0.1            |Storage                   |
+|Usable Capacity                                             |kWh      |0.1            |Storage                   |
+|Rated Power Output                                          |kW       |0.01           |Storage                   |
+|Nominal Voltage                                             |V        |50             |Storage                   |
+|Round Trip Efficiency                                       |(0-1)    |0.95           |Storage                   |
+|Minimum State Of Charge Fraction                            |(0-1)    |0.1            |Storage                   |
+|Maximum State Of Charge Fraction                            |(0-1)    |0.97           |Storage                   |
+|Lifetime Model                                              |N/A      |KandlerSmith   |Storage                   |
+|Initial Fraction State of Charge                            |(0-1)    |0.95           |Storage                   |
+|Percentage of Maximum Charge Power to use for Charging      |fraction |0.8            |ELCD                      |
+|Percentage of Maximum Discharge Power to use for Discharging|fraction |0.95           |ELCD                      |
+|Summer Month to Begin Storage Season                        |Integer  |3              |ELCD                      |
+|Summer Day to Begin Storage Season                          |Integer  |1              |ELCD                      |
+|Summer Month to End Storage Season                          |Integer  |9              |ELCD                      |
+|Summer Day to End Storage Season                            |Integer  |15             |ELCD                      |
+|Winter Weekday Hour To Begin Storage Discharge              |Integer  |9              |ELCD                      |
+|Winter Weekday Hour To End Storage Discharge                |Integer  |22             |ELCD                      |
+|Winter Weekend Hour To Begin Storage Discharge              |Integer  |9              |ELCD                      |
+|Winter Weekend Hour To End Storage Discharge                |Integer  |22             |ELCD                      |
+|Summer Weekday Hour To Begin Storage Discharge              |Integer  |11             |ELCD                      |
+|Summer Weekday Hour To End Storage Discharge                |Integer  |20             |ELCD                      |
+|Summer Weekend Hour To Begin Storage Discharge              |Integer  |11             |ELCD                      |
+|Summer Weekend Hour To End Storage Discharge                |Integer  |20             |ELCD                      |
+|Design Storage Control Charge Power Per Battery             |kW       |1927           |ELCD                      |
+|Design Storage Control Discharge Power Per Battery          |kW       |1927           |ELCD                      |
+|Storage Control Utility Demand Target                       |kW       |450            |ELCD                      |
+|Minimum Storage State Of Charge Fraction                    |(0-1)    |0.05           |ELCD                      |
+|Maximum Storage State Of Charge Fraction                    |(0-1)    |0.96           |ELCD                      |
  
+
+#### Example csv file #2: Battery Storage System Only
+
+This table shows the configuraton of the measure .csv file to model the performance of a 75 kW Fixed (Roof Mounted) South Facing PV System. 
+When the sun is ahining, the PV System will generate Power, which will offset electricity purchases. No energy will be stored. 
+
+The measure uses EnergyPlus "ElectricLoadCenter:Storage:LiIonNMCBattery" object to model battery performance.
+EnergPlus documentation for the LiIonNMCBattery object can be found {here](https://energyplus.net/assets/nrel_custom/pdfs/pdfs_v23.2.0/InputOutputReference.pdf).
+
+|**Argument Name**                                           |**Units**|**Value**      |**System Component**      |
+|------------------------------------------------------------|---------|---------------|--------------------------|
+|Max Power Output                                            |kW       |0.01             |PV                        |
+|Array Type                                                  |N/A      |OneAxis        |PV                        |
+|Module Type                                                 |N/A      |Premium        |PV                        |
+|System Losses Fraction                                      |(0 - 100)|17             |PV                        |
+|Array Tilt                                                  |Degrees  |30             |PV                        |
+|Array Azimuth                                               |Degrees  |180            |PV                        |
+|Ground Coverage Ratio                                       |(0 - 100)|35             |PV                        |
+|Inverter Efficiency                                         |(0-1)    |0.96           |Inverter                  |
+|DC to AC Size Ratio                                         |N/A      |1.1            |Inverter                  |
+|Converter Simple Fixed Efficiency                           |(0-1)    |0.94           |Converter                 |
+|Converter Ancillary Power Consumed In Standby               |W        |100            |Converter                 |
+|Converter Radiative Fraction                                |(0-1)    |0.25           |Converter                 |
+|Battery Make Model                                          |N/A      |10 Tesla PowerWall|Storage/Inverter/Converter|
+|Nominal Capacity                                            |kWh      |100            |Storage                   |
+|Usable Capacity                                             |kWh      |95.0            |Storage                   |
+|Rated Power Output                                          |kW       |50              |Storage                   |
+|Nominal Voltage                                             |V        |50             |Storage                   |
+|Round Trip Efficiency                                       |(0-1)    |0.95           |Storage                   |
+|Minimum State Of Charge Fraction                            |(0-1)    |0.1            |Storage                   |
+|Maximum State Of Charge Fraction                            |(0-1)    |0.97           |Storage                   |
+|Lifetime Model                                              |N/A      |KandlerSmith   |Storage                   |
+|Initial Fraction State of Charge                            |(0-1)    |0.95           |Storage                   |
+|Percentage of Maximum Charge Power to use for Charging      |fraction |0.8            |ELCD                      |
+|Percentage of Maximum Discharge Power to use for Discharging|fraction |0.95           |ELCD                      |
+|Summer Month to Begin Storage Season                        |Integer  |3              |ELCD                      |
+|Summer Day to Begin Storage Season                          |Integer  |1              |ELCD                      |
+|Summer Month to End Storage Season                          |Integer  |9              |ELCD                      |
+|Summer Day to End Storage Season                            |Integer  |15             |ELCD                      |
+|Winter Weekday Hour To Begin Storage Discharge              |Integer  |9              |ELCD                      |
+|Winter Weekday Hour To End Storage Discharge                |Integer  |22             |ELCD                      |
+|Winter Weekend Hour To Begin Storage Discharge              |Integer  |9              |ELCD                      |
+|Winter Weekend Hour To End Storage Discharge                |Integer  |22             |ELCD                      |
+|Summer Weekday Hour To Begin Storage Discharge              |Integer  |11             |ELCD                      |
+|Summer Weekday Hour To End Storage Discharge                |Integer  |20             |ELCD                      |
+|Summer Weekend Hour To Begin Storage Discharge              |Integer  |11             |ELCD                      |
+|Summer Weekend Hour To End Storage Discharge                |Integer  |20             |ELCD                      |
+|Design Storage Control Charge Power Per Battery             |kW       |19270           |ELCD                      |
+|Design Storage Control Discharge Power Per Battery          |kW       |19270           |ELCD                      |
+|Storage Control Utility Demand Target                       |kW       |450            |ELCD                      |
+|Minimum Storage State Of Charge Fraction                    |(0-1)    |0.05           |ELCD                      |
+|Maximum Storage State Of Charge Fraction                    |(0-1)    |0.96           |ELCD                      |
+ 
+
 
 ## 5) revit_create_typical_shw_systems_using_os_standards_gem
 
