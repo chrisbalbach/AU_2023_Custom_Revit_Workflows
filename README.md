@@ -450,21 +450,21 @@ executing all reporting measures. Within these (3) categories, mesures execute s
  from one measure passing as (input) into the next measure.
 
   1. "Change Building Location" <sup>1</sup>
-  2. "ImportGbxml" (1)
-  3. "Advanced Import Gbxml" (1)
-  4. "GBXML HVAC Import" (1)
-  5. "Set Simulation Control" (1)
-  6. "gbxml_to_openstudio_cleanup" (1)
-  7  **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** (1)
-  8  **"revit_analyze_all_electric_hvac_systems"** (1)
-  9. "Add XML Output Control Style"  (2)
-  10. **"revit_analyze_electric_tariff"** (2)
-  11. "OpenStudio Results" (3)
-  12. "Systems Analysis Report" (3)
+  2. "ImportGbxml" <sup>1</sup>
+  3. "Advanced Import Gbxml" <sup>1</sup>
+  4. "GBXML HVAC Import" <sup>1</sup>
+  5. "Set Simulation Control" <sup>1</sup>
+  6. "gbxml_to_openstudio_cleanup" <sup>1</sup>
+  7  **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** <sup>1</sup>
+  8  **"revit_analyze_all_electric_hvac_systems"** <sup>1</sup>
+  9. "Add XML Output Control Style"  <sup>2</sup>
+  10. **"revit_analyze_electric_tariff"** <sup>2</sup>
+  11. "OpenStudio Results" <sup>3</sup>
+  12. "Systems Analysis Report" <sup>3</sup>
  
- (1) This measure is an OpenStudio Measure.
- (2) This measure is an EnergyPlus Measure.
- (3) This measure is a Reporting Measure.
+ 1. This measure is an OpenStudio Measure.
+ 2. This measure is an EnergyPlus Measure.
+ 3. This measure is a Reporting Measure.
   
 The Revit command **'File->Options->File Locations'** can be executed, to point Revit to the location of the workflow file.
 
@@ -481,22 +481,23 @@ The list below describes the sequential order of the measures that are used to c
 executing all reporting measures. Within these (3) categories, mesures execute sequentially, with the results (outpout)
  from one measure passing as (input) into the next measure.
    
-  1. "Change Building Location" (1)
-  2. "ImportGbxml" (1)
-  3. "Advanced Import Gbxml" (1)
-  4. "GBXML HVAC Import" (1)
-  5. "Set Simulation Control" (1)
-  6. "gbxml_to_openstudio_cleanup" (1)
-  7  **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** (1)
-  8  **"revit_analyze_all_electric_hvac_systems"** (1)
-  9. "Add XML Output Control Style"  (2)
-  10. **"revit_analyze_electric_tariff"** (2)
-  11. "OpenStudio Results" (3)
-  12. "Systems Analysis Report" (3)
+  1. "Change Building Location" <sup>1</sup>
+  2. "ImportGbxml" <sup>1</sup>
+  3. "Advanced Import Gbxml" <sup>1</sup>
+  4. "GBXML HVAC Import" <sup>1</sup>
+  5. "Set Simulation Control" <sup>1</sup>
+  6. "gbxml_to_openstudio_cleanup" <sup>1</sup>
+  7  **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** <sup>1</sup>
+  8  **"revit_analyze_all_electric_hvac_systems"** <sup>1</sup>
+  9. "Add XML Output Control Style"  <sup>2</sup>
+  10. **"revit_analyze_electric_tariff"** <sup>2</sup>
+  11. "OpenStudio Results" <sup>3</sup>
+  12. "Systems Analysis Report" <sup>3</sup>
+ 
 
- (1) This measure is an OpenStudio Measure.
- (2) This measure is an EnergyPlus Measure.
- (3) This measure is a Reporting Measure.
+ 1. This measure is an OpenStudio Measure.
+ 2. This measure is an EnergyPlus Measure.
+ 3. This measure is a Reporting Measure.
   
 The Revit command **'File->Options->File Locations'** can be executed, to point Revit to the location of the workflow file.
 
@@ -514,23 +515,23 @@ The list below describes the sequential order of the measures that are used to c
 executing all reporting measures. Within these (3) categories, mesures execute sequentially, with the results (outpout)
  from one measure passing as (input) into the next measure.
    
-  1. "Change Building Location"
-  2. "ImportGbxml"
-  3. "Advanced Import Gbxml"
-  4. "GBXML HVAC Import"
-  5. "Set Simulation Control"
-  6. "gbxml_to_openstudio_cleanup"
-  7  **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** (1)
-  8  **"revit_analyze_all_electric_hvac_systems"** (1)
-  9. **revit_create_baseline_building** (1) 
-  10. "Add XML Output Control Style"
-  11. **"revit_analyze_electric_tariff"** (2)
-  12. "OpenStudio Results"
-  13. "Systems Analysis Report"
+  1. "Change Building Location" <sup>1</sup>
+  2. "ImportGbxml" <sup>1</sup>
+  3. "Advanced Import Gbxml" <sup>1</sup>
+  4. "GBXML HVAC Import" <sup>1</sup>
+  5. "Set Simulation Control" <sup>1</sup>
+  6. "gbxml_to_openstudio_cleanup"<sup>1</sup>
+  7  **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** <sup>1</sup>
+  8  **"revit_analyze_all_electric_hvac_systems"** <sup>1</sup>
+  9. **revit_create_baseline_building** <sup>1</sup> 
+  10. "Add XML Output Control Style" <sup>2</sup>
+  11. **"revit_analyze_electric_tariff"** <sup>2</sup>
+  12. "OpenStudio Results" <sup>3</sup>
+  13. "Systems Analysis Report" <sup>3</sup>
  
- (1) This measure is an OpenStudio Measure.
- (2) This measure is an EnergyPlus Measure.
- (3) This measure is a Reporting Measure.
+ 1. This measure is an OpenStudio Measure.
+ 2. This measure is an EnergyPlus Measure.
+ 3. This measure is a Reporting Measure.
   
 The Revit command **'File->Options->File Locations'** can be executed, to point Revit to the location of the workflow file.
 
@@ -548,24 +549,24 @@ The workflow extends a 'default' Revit Energy workflow by adding (4) new measure
 The list below describes the sequential order of the measures that are used to create this workflow .osw file. Note that OpenStudio Measures are executed first, followed by EnergyPlus Measures,with the workflow finishing by 
 executing all reporting measures. Within these (3) categories, mesures execute sequentially, with the results (outpout)
  from one measure passing as (input) into the next measure.
-   
-  1. "Change Building Location" (1) 
-  2. "ImportGbxml" (1)
-  3. "Advanced Import Gbxml" (1)
-  4. "GBXML HVAC Import" (1)
-  5. "Set Simulation Control" (1)
-  6. "gbxml_to_openstudio_cleanup" (1)
-  7  **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** (1)
-  8  **"revit_analyze_all_electric_hvac_systems"** (1)
-  9. **revit_create_baseline_building** (1) 
-  10. "Add XML Output Control Style" (2)
-  11. **"revit_analyze_electric_tariff"** (2)
-  12. "OpenStudio Results"  (3)
-  13. "Systems Analysis Report"  (3)
  
- (1) This measure is an OpenStudio Measure.
- (2) This measure is an EnergyPlus Measure.
- (3) This measure is a Reporting Measure.
+  1. "Change Building Location" <sup>1</sup>
+  2. "ImportGbxml" <sup>1</sup>
+  3. "Advanced Import Gbxml" <sup>1</sup>
+  4. "GBXML HVAC Import" <sup>1</sup>
+  5. "Set Simulation Control" <sup>1</sup>
+  6. "gbxml_to_openstudio_cleanup"<sup>1</sup>
+  7  **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** <sup>1</sup>
+  8  **"revit_analyze_all_electric_hvac_systems"** <sup>1</sup>
+  9. **revit_create_baseline_building** <sup>1</sup> 
+  10. "Add XML Output Control Style" <sup>2</sup>
+  11. **"revit_analyze_electric_tariff"** <sup>2</sup>
+  12. "OpenStudio Results" <sup>3</sup>
+  13. "Systems Analysis Report" <sup>3</sup>
+ 
+ 1. This measure is an OpenStudio Measure.
+ 2. This measure is an EnergyPlus Measure.
+ 3. This measure is a Reporting Measure.
   
 The Revit command **'File->Options->File Locations'** can be executed, to point Revit to the location of the workflow file.
 
