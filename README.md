@@ -444,22 +444,27 @@ EnergPlus documentation for the LiIonNMCBattery object can be found here: https:
 - Add SHW loads and equipment to the Revit generated OpenStudio Model
 - Replace Revit generated HVAC systems with user-defined ALL Electric HVAC Systems, using the topology of existing Air Systems and Zone Equipment 
 - Apply a user-defined Tariff to monotize predicted energy usage.
-   
-  1. "Change Building Location"
-  2. "ImportGbxml"
-  3. "Advanced Import Gbxml"
-  4. "GBXML HVAC Import"
-  5. "Set Simulation Control"
-  6. "gbxml_to_openstudio_cleanup"
+
+The list below describes the sequential order of the measures that are used to create this workflow .osw file. Note that OpenStudio Measures are executed first, followed by EnergyPlus Measures,with the workflow finishing by 
+executing all reporting measures. Within these (3) categories, mesures execute sequentially, with the results (outpout)
+ from one measure passing as (input) into the next measure.
+
+  1. "Change Building Location" (1)
+  2. "ImportGbxml" (1)
+  3. "Advanced Import Gbxml" (1)
+  4. "GBXML HVAC Import" (1)
+  5. "Set Simulation Control" (1)
+  6. "gbxml_to_openstudio_cleanup" (1)
   7  **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** (1)
   8  **"revit_analyze_all_electric_hvac_systems"** (1)
-  9. "Add XML Output Control Style"
+  9. "Add XML Output Control Style"  (2)
   10. **"revit_analyze_electric_tariff"** (2)
-  11. "OpenStudio Results"
-  12. "Systems Analysis Report"
+  11. "OpenStudio Results" (3)
+  12. "Systems Analysis Report" (3)
  
  (1) This measure is an OpenStudio Measure.
  (2) This measure is an EnergyPlus Measure.
+ (3) This measure is a Reporting Measure.
   
 The Revit command **'File->Options->File Locations'** can be executed, to point Revit to the location of the workflow file.
 
@@ -471,22 +476,27 @@ The workflow extends a 'default' Revit Loads and Sizing workflow by adding (3) n
 - Add SHW loads and equipment to the Revit generated OpenStudio Model
 - Replace Revit generated HVAC systems with user-defined ALL Electric HVAC Systems, using the topology of existing Air Systems and Zone Equipment 
 - Apply a user-defined Tariff to monotize predicted energy usage.
+
+The list below describes the sequential order of the measures that are used to create this workflow .osw file. Note that OpenStudio Measures are executed first, followed by EnergyPlus Measures,with the workflow finishing by 
+executing all reporting measures. Within these (3) categories, mesures execute sequentially, with the results (outpout)
+ from one measure passing as (input) into the next measure.
    
-  1. "Change Building Location"
-  2. "ImportGbxml"
-  3. "Advanced Import Gbxml"
-  4. "GBXML HVAC Import"
-  5. "Set Simulation Control"
-  6. "gbxml_to_openstudio_cleanup"
+  1. "Change Building Location" (1)
+  2. "ImportGbxml" (1)
+  3. "Advanced Import Gbxml" (1)
+  4. "GBXML HVAC Import" (1)
+  5. "Set Simulation Control" (1)
+  6. "gbxml_to_openstudio_cleanup" (1)
   7  **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** (1)
-  8  **"revit_analyze_all_electric_hvac_systems"** *(1)
-  9. "Add XML Output Control Style"
+  8  **"revit_analyze_all_electric_hvac_systems"** (1)
+  9. "Add XML Output Control Style"  (2)
   10. **"revit_analyze_electric_tariff"** (2)
-  11. "OpenStudio Results"
-  12. "Systems Analysis Report"
- 
+  11. "OpenStudio Results" (3)
+  12. "Systems Analysis Report" (3)
+
  (1) This measure is an OpenStudio Measure.
  (2) This measure is an EnergyPlus Measure.
+ (3) This measure is a Reporting Measure.
   
 The Revit command **'File->Options->File Locations'** can be executed, to point Revit to the location of the workflow file.
 
@@ -499,6 +509,10 @@ The workflow extends a 'default' Revit Energy workflow by adding (4) new measure
 - Replace Revit generated HVAC systems with user-defined ALL Electric HVAC Systems, using the topology of existing Air Systems and Zone Equipment 
 - Transform this model into an ASHRAE 90.1 Appendix G variant (a 'baseline' building).
 - Apply a user-defined Tariff to monetize predicted energy usage.
+
+The list below describes the sequential order of the measures that are used to create this workflow .osw file. Note that OpenStudio Measures are executed first, followed by EnergyPlus Measures,with the workflow finishing by 
+executing all reporting measures. Within these (3) categories, mesures execute sequentially, with the results (outpout)
+ from one measure passing as (input) into the next measure.
    
   1. "Change Building Location"
   2. "ImportGbxml"
@@ -516,6 +530,7 @@ The workflow extends a 'default' Revit Energy workflow by adding (4) new measure
  
  (1) This measure is an OpenStudio Measure.
  (2) This measure is an EnergyPlus Measure.
+ (3) This measure is a Reporting Measure.
   
 The Revit command **'File->Options->File Locations'** can be executed, to point Revit to the location of the workflow file.
 
@@ -529,23 +544,28 @@ The workflow extends a 'default' Revit Energy workflow by adding (4) new measure
 - Replace Revit generated HVAC systems with user-defined ALL Electric HVAC Systems, using the topology of existing Air Systems and Zone Equipment 
 - Transform this model into an ASHRAE 90.1 Appendix G variant (a 'baseline' building).
 - Apply a user-defined Tariff to monetize predicted energy usage.
+
+The list below describes the sequential order of the measures that are used to create this workflow .osw file. Note that OpenStudio Measures are executed first, followed by EnergyPlus Measures,with the workflow finishing by 
+executing all reporting measures. Within these (3) categories, mesures execute sequentially, with the results (outpout)
+ from one measure passing as (input) into the next measure.
    
-  1. "Change Building Location"
-  2. "ImportGbxml"
-  3. "Advanced Import Gbxml"
-  4. "GBXML HVAC Import"
-  5. "Set Simulation Control"
-  6. "gbxml_to_openstudio_cleanup"
+  1. "Change Building Location" (1) 
+  2. "ImportGbxml" (1)
+  3. "Advanced Import Gbxml" (1)
+  4. "GBXML HVAC Import" (1)
+  5. "Set Simulation Control" (1)
+  6. "gbxml_to_openstudio_cleanup" (1)
   7  **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** (1)
   8  **"revit_analyze_all_electric_hvac_systems"** (1)
   9. **revit_create_baseline_building** (1) 
-  10. "Add XML Output Control Style"
+  10. "Add XML Output Control Style" (2)
   11. **"revit_analyze_electric_tariff"** (2)
-  12. "OpenStudio Results"
-  13. "Systems Analysis Report"
+  12. "OpenStudio Results"  (3)
+  13. "Systems Analysis Report"  (3)
  
  (1) This measure is an OpenStudio Measure.
  (2) This measure is an EnergyPlus Measure.
+ (3) This measure is a Reporting Measure.
   
 The Revit command **'File->Options->File Locations'** can be executed, to point Revit to the location of the workflow file.
 
