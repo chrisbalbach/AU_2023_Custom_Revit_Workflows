@@ -34,11 +34,11 @@ New "Air Systems" and "Zone Equipment" objects and connections to Analytical Spa
 
 The following OpenStudio measures are included in this repository. Users can downloaded and edit these measures to create custom OS workflows, in Revit. 
 
-1. ["revit_analyze_all_electric_hvac_systems"](##measure-#1:-"revit_analyze_all_electric_hvac_systems") 
-2. ["revit_analyze_electric_tariff"](##measure-#2:-"revit_analyze_electric_tariff")
-3. ["revit_create_baseline_building"](##measure-#3-"revit_create_baseline_building") 
-4. ["revit_add_pv_add_storage_tou"](##measure-#4-"revit_add_pv_add_storage_tou")
-5. ["revit_create_typical_shw_systems_using_os_standards_gem"](##measure-#5-"revit_create_typical_shw_systems_using_os_standards_gem")
+1. ["revit_analyze_all_electric_hvac_systems"](https://github.com/chrisbalbach/chrisbalbach.github.io#measure-1-revit_analyze_all_electric_hvac_systems) 
+2. ["revit_analyze_electric_tariff"](https://github.com/chrisbalbach/chrisbalbach.github.io#measure-2-revit_analyze_electric_tariff)
+3. ["revit_create_baseline_building"](https://github.com/chrisbalbach/chrisbalbach.github.io#measure-3-revit_create_baseline_building) 
+4. ["revit_add_pv_add_storage_tou"](https://github.com/chrisbalbach/chrisbalbach.github.io#measure-4-revit_add_pv_add_storage_tou)
+5. ["revit_create_typical_shw_systems_using_os_standards_gem"](https://github.com/chrisbalbach/chrisbalbach.github.io#measure-5-revit_create_typical_shw_systems_using_os_standards_gem)
 
 Each of these measures requires the user to create (pre-process) at least (1) .csv file. In some cases, the pre-processed csv files will need information that 
 can be found within the Revit gbXML file export. 
@@ -267,6 +267,7 @@ This table shows the configuraton of the .csv file for a **complex energy tariff
 
 
 ## Measure #3 "revit_create_baseline_building"
+## Measure #1: "revit_analyze_all_electric_hvac_systems"
 
 This "OpenStudio" measure is designed to allow Revit users to creat an "ASHRAE" baseline OpenStudio model. The measure calls several methods from the "OpenStudio Standard Gem" to accomplish this. 
 Revit.
