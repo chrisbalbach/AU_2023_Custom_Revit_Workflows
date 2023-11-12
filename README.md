@@ -60,7 +60,7 @@ The measure creates many different HVAC systems, whose properties are either:
 2. Set to 'regulated' values defined by the selected ASHRAE standard.
 
 This measures includes (1) configurable .csv file.
-### csv file #1: "Building_Level_Mappings.csv"
+### Measure #1 .csv file #1: "Building_Level_Mappings.csv"
 
 The .csv file for configuring this measure is named "Building_Level_Mappings.csv", and it is located in the /resources directory of the 
 measure. Values should be provided in column B of the .csv file, for **Row 2 through Row 5**. 
@@ -86,14 +86,14 @@ for both a electricity supplier and an electricity tranmission and distribution 
 
 This measures includes (1) configurable .csv file.
 
-### csv file #1: "Electric_Utility_Tariff_Arguments.csv"
+### Measure #2 .csv file #1: "Electric_Utility_Tariff_Arguments.csv"
 
 The .csv file for configuring this measure is named "Electric_Utility_Tariff_Arguments.csv", and it is located in the /resources directory of the 
 measure. Values should be provided in column B of the .csv file, for **Row 2 through Row 65**. 
 
 Allowable enumerations for 'demand_window_length' can be found in measure.rb lines (1218 - 1222). 
 
-#### example csv file #1: Simple Tariff
+#### Measure #2 Example .csv file #1: Simple Tariff
 
 This table shows the configuraton of the .csv file for a **flat energy tariff of $0.15 / kWh**. 
 
@@ -169,7 +169,7 @@ This table shows the configuraton of the .csv file for a **flat energy tariff of
 |t_and_d_winter_elec_demand_block_2_cost_per_kw|0            |Double |$/kW       |T & D|
 |t_and_d_winter_elec_remaining_cost_per_kw     |0            |Double |$/kW       |T & D|
 
-#### example csv file #2: Complex Tariff
+#### Measure #2 Example .csv file #2: Complex Tariff
 
 This table shows the configuraton of the .csv file for a **complex energy tariff**. 
 
@@ -274,7 +274,7 @@ Revit.
 
 This measures includes (21) configurable .csv files.
 
-### csv file #1: "Building_Baseline_Mappings.csv"
+### Measure #3 .csv file #1: "Building_Baseline_Mappings.csv"
 
 The first .csv file for configuring this measure is named "Building_Baseline_Mappings.csv", and it is located in the /resources directory of the 
 measure. Values should be provided in column B of the .csv file, for **Row 2 through Row 9**. 
@@ -291,7 +291,7 @@ For all Rows, Column C of the .csv file describes the allowable enumarations.
 5. **Row 8**: A text string for the (ASHRAE 90.1-2016 or 90.1-2019) building type for the window/wall ratio. Allowable enumerations are decribed in lines (80 - 96) of the measure.rb file. 
 5. **Row 9**: A text string for the (ASHRAE 90.1-2016 or 90.1-2019) building type for the baseline SHW system. Allowable enumerations are decribed in lines (103 - 139) of the measure.rb file. 
 
-### csv file #2: "<file_name_is_set_by_user>.csv"
+### Measure #3 .csv file #2: "<file_name_is_set_by_user>.csv"
 
 The second .csv file for configuring this measure is named by the user, and this file should saved to the /resources directory of the 
 measure. Values should be provided in columns A, B and C of the .csv file, with one row created for each 'Space" object found in the 
@@ -323,7 +323,7 @@ The measure .csv file can be configured to model a 'PV Only" scenario by specify
 
 This measures includes (1) configurable .csv file.
 
-### csv file #1: "PV_Battery_Inputs.csv"
+### Measure #4 .csv file #1: "PV_Battery_Inputs.csv"
 
 The .csv file for configuring this measure is named "PV_Battery_Inputs.csv", and it is located in the /resources directory of the 
 measure. Values should be provided in column B of the .csv file, for **Row 2 through Row 42**. 
@@ -331,7 +331,7 @@ measure. Values should be provided in column B of the .csv file, for **Row 2 thr
 Allowable enumerations for 'Array Type' can be found in measure.rb lines (36-40). 
 Allowable enumerations for 'Module Type' can be found in measure.rb lines (50-52). 
 
-#### Example csv file #1: Model PV System Only
+#### Measure #4 Example .csv file #1: Model PV System Only
 
 This table shows the configuraton of the measure .csv file to model the performance of a 75 kW Fixed (Roof Mounted) South Facing PV System. 
 When the sun is ahining, the PV System will generate Power, which will offset electricity purchases. No energy will be stored. 
@@ -380,7 +380,7 @@ When the sun is ahining, the PV System will generate Power, which will offset el
 |Minimum Storage State Of Charge Fraction                    |(0-1)    |0.05           |ELCD                      |
 |Maximum Storage State Of Charge Fraction                    |(0-1)    |0.96           |ELCD                      |
 
-#### Example csv file #2: Battery Storage System Only
+#### Measure #4 Example .csv file #2: Battery Storage System Only
 
 This table shows the configuraton of the measure .csv file to model the performance of a 100 kWh Battery System that has been configured to charges
 the battery during non-peak hours (differeing by season) and discharge the battery during peak hours, to avoid purchasing on-peak energy 
@@ -440,7 +440,7 @@ Revit Users must populate (2) csv files for thos measure to properly operate.
 
 This measures includes (21) configurable .csv files.
 
-### csv file #1: "Bldg_Level_SHW_Systems_Equip_Eff_Map.csv"
+### Measure #5 .csv file #1: "Bldg_Level_SHW_Systems_Equip_Eff_Map.csv"
 
 The first .csv file for configuring this measure is named "Bldg_Level_SHW_Systems_Equip_Eff_Map.csv", and it is located in the /resources directory of the 
 measure. Values should be provided in column B of the .csv file, for **Row 2 through Row 4**. 
@@ -452,7 +452,7 @@ For all Rows, Column E of the .csv file describes the allowable enumarations.
    Allowable enumerations are decribed in lines (47 - 193) of the measure.rb file.
 3. **Row 4**: The type of electric water heater that will be created. Allowable enumerations are described in line 253 of the measure.rb file.
 
-### csv file #2: "<file_name_is_set_by_user>.csv"
+### Measure #5 .csv file #2: "<file_name_is_set_by_user>.csv"
 
 The second .csv file for configuring this measure is named by the user, and this file should saved to the /resources directory of the 
 measure. Values should be provided in columns A, B and C of the .csv file, with one row created for each 'Space" object found in the 
