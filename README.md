@@ -455,16 +455,18 @@ executing all reporting measures. Within these (3) categories, mesures execute s
   4. "GBXML HVAC Import" <sup>1</sup>
   5. "Set Simulation Control" <sup>1</sup>
   6. "gbxml_to_openstudio_cleanup" <sup>1</sup>
-  7  **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** <sup>1</sup>
-  8  **"revit_analyze_all_electric_hvac_systems"** <sup>1</sup>
+  7.  **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** <sup>1</sup>
+  8.  **"revit_analyze_all_electric_hvac_systems"** <sup>1</sup>
   9. "Add XML Output Control Style"  <sup>2</sup>
   10. **"revit_analyze_electric_tariff"** <sup>2</sup>
   11. "OpenStudio Results" <sup>3</sup>
   12. "Systems Analysis Report" <sup>3</sup>
  
- <sup>1</sup> This measure is an OpenStudio Measure.
- <sup>2</sup>This measure is an EnergyPlus Measure.
- <sup>3</sup> This measure is a Reporting Measure.
+ <sup>1.</sup> This measure is an OpenStudio Measure.
+ 
+ <sup>2.</sup>This measure is an EnergyPlus Measure.
+ 
+ <sup>3.</sup> This measure is a Reporting Measure.
   
 The Revit command **'File->Options->File Locations'** can be executed, to point Revit to the location of the workflow file.
 
@@ -487,8 +489,8 @@ executing all reporting measures. Within these (3) categories, mesures execute s
   4. "GBXML HVAC Import" <sup>1</sup>
   5. "Set Simulation Control" <sup>1</sup>
   6. "gbxml_to_openstudio_cleanup" <sup>1</sup>
-  7  **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** <sup>1</sup>
-  8  **"revit_analyze_all_electric_hvac_systems"** <sup>1</sup>
+  7.  **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** <sup>1</sup>
+  8.  **"revit_analyze_all_electric_hvac_systems"** <sup>1</sup>
   9. "Add XML Output Control Style"  <sup>2</sup>
   10. **"revit_analyze_electric_tariff"** <sup>2</sup>
   11. "OpenStudio Results" <sup>3</sup>
@@ -521,8 +523,8 @@ executing all reporting measures. Within these (3) categories, mesures execute s
   4. "GBXML HVAC Import" <sup>1</sup>
   5. "Set Simulation Control" <sup>1</sup>
   6. "gbxml_to_openstudio_cleanup"<sup>1</sup>
-  7  **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** <sup>1</sup>
-  8  **"revit_analyze_all_electric_hvac_systems"** <sup>1</sup>
+  7.  **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** <sup>1</sup>
+  8.  **"revit_analyze_all_electric_hvac_systems"** <sup>1</sup>
   9. **revit_create_baseline_building** <sup>1</sup> 
   10. "Add XML Output Control Style" <sup>2</sup>
   11. **"revit_analyze_electric_tariff"** <sup>2</sup>
@@ -556,8 +558,8 @@ executing all reporting measures. Within these (3) categories, mesures execute s
   4. "GBXML HVAC Import" <sup>1</sup>
   5. "Set Simulation Control" <sup>1</sup>
   6. "gbxml_to_openstudio_cleanup"<sup>1</sup>
-  7  **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** <sup>1</sup>
-  8  **"revit_analyze_all_electric_hvac_systems"** <sup>1</sup>
+  7.  **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** <sup>1</sup>
+  8.  **"revit_analyze_all_electric_hvac_systems"** <sup>1</sup>
   9. **revit_create_baseline_building** <sup>1</sup> 
   10. "Add XML Output Control Style" <sup>2</sup>
   11. **"revit_analyze_electric_tariff"** <sup>2</sup>
