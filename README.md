@@ -1,5 +1,5 @@
 # AU_2023_Custom_Revit_Workflows
-This repository contains the Revit Projects, OpenStudio Measures and Revit Workflows needed to reproduce the work presented at the AU 2023 Session 602389 Titled "Design and Analysis of Building Electrification with Revit Systems Analysis" 
+This repository contains the **Revit Project files**, **OpenStudio Measures** and **Revit Workflow files** needed to reproduce the work presented at the AU 2023 Conference Session 602389 Titled **"Design and Analysis of Building Electrification with Revit Systems Analysis"**
 
 # Dependencies
 
@@ -17,8 +17,6 @@ Users attempting to recreate the work demonstrated during this AU class should e
 * [Revit Workflow files](#revit-workflow-files)
 * [Useful Scripts](#useful-scripts)
 * [Useful Links](#useful-links)
-
-
 
 # Revit File
 
@@ -471,21 +469,17 @@ A seperate row shoudl be created for **each** Space object found in the gbXML fi
 
 ## File: "Example 1 Annual Building Energy Simulation.osw" 
 
-This table shows the configuraton of the measure .csv file to model the performance of a 100 kWh Battery System that has been configured to charges
-the battery during non-peak hours (differeing by season) and discharge the battery during peak hours, to avoid purchasing on-peak energy 
-unitl the battery reaches it's iminimal alowable state of charge (SOC). No on-site energy will be generated. 
-
-The measure uses EnergyPlus "ElectricLoadCenter:Storage:LiIonNMCBattery" object to model battery performance.
-EnergPlus documentation for the LiIonNMCBattery object can be found here: https://energyplus.net/assets/nrel_custom/pdfs/pdfs_v23.2.0/InputOutputReference.pdf.
+This workflow generates an **"Energy Analysis"** Report by chaining together these measures into a new json .osw file. 
+The workflow extends the 'default' Revit Loads and Sizing workflow by adding (3) new measures that will:
 
 - Add SHW loads and equipment to the Revit generated OpenStudio Model
 - Replace Revit generated HVAC systems with user-defined ALL Electric HVAC Systems, using the topology of existing Air Systems and Zone Equipment 
 - Apply a user-defined Tariff to monotize predicted energy usage.
 
-The list below describes the sequential order of the measures that are used to create this workflow .osw file. Note that OpenStudio Measures are executed first, followed by EnergyPlus Measures,with the workflow finishing by 
+The list below describes the sequential order of the measures that are used to create this .osw file. Note that OpenStudio Measures are executed first, followed by EnergyPlus Measures,with the workflow finishing by 
 executing all reporting measures. Within these (3) categories, mesures execute sequentially, with the results (outpout)
  from one measure passing as (input) into the next measure.
-
+   
   1. "Change Building Location" <sup>1</sup>
   2. "ImportGbxml" <sup>1</sup>
   3. "Advanced Import Gbxml" <sup>1</sup>
@@ -514,7 +508,7 @@ The workflow extends a 'default' Revit Loads and Sizing workflow by adding (3) n
 - Replace Revit generated HVAC systems with user-defined ALL Electric HVAC Systems, using the topology of existing Air Systems and Zone Equipment 
 - Apply a user-defined Tariff to monotize predicted energy usage.
 
-The list below describes the sequential order of the measures that are used to create this workflow .osw file. Note that OpenStudio Measures are executed first, followed by EnergyPlus Measures,with the workflow finishing by 
+The list below describes the sequential order of the measures that are used to create this .osw file. Note that OpenStudio Measures are executed first, followed by EnergyPlus Measures,with the workflow finishing by 
 executing all reporting measures. Within these (3) categories, mesures execute sequentially, with the results (outpout)
  from one measure passing as (input) into the next measure.
    
@@ -547,7 +541,7 @@ The workflow extends a 'default' Revit Energy workflow by adding (4) new measure
 - Transform this model into an ASHRAE 90.1 Appendix G variant (a 'baseline' building).
 - Apply a user-defined Tariff to monetize predicted energy usage.
 
-The list below describes the sequential order of the measures that are used to create this workflow .osw file. Note that OpenStudio Measures are executed first, followed by EnergyPlus Measures,with the workflow finishing by 
+The list below describes the sequential order of the measures that are used to create this .osw file. Note that OpenStudio Measures are executed first, followed by EnergyPlus Measures,with the workflow finishing by 
 executing all reporting measures. Within these (3) categories, mesures execute sequentially, with the results (outpout)
  from one measure passing as (input) into the next measure.
    
@@ -581,7 +575,7 @@ The workflow extends a 'default' Revit Energy workflow by adding (4) new measure
 - Transform this model into an ASHRAE 90.1 Appendix G variant (a 'baseline' building).
 - Apply a user-defined Tariff to monetize predicted energy usage.
 
-The list below describes the sequential order of the measures that are used to create this workflow .osw file. Note that OpenStudio Measures are executed first, followed by EnergyPlus Measures,with the workflow finishing by 
+The list below describes the sequential order of the measures that are used to create this .osw file. Note that OpenStudio Measures are executed first, followed by EnergyPlus Measures,with the workflow finishing by 
 executing all reporting measures. Within these (3) categories, mesures execute sequentially, with the results (outpout)
  from one measure passing as (input) into the next measure.
  
