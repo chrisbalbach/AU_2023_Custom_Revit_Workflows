@@ -623,3 +623,24 @@ Users authoring custom OpenStudio measures for Revit 2024 should seperately down
 "Everything" is a search engine for Windows that locates files and folders by filename instantly. For developing and testing custom workflows,
 It can be a useful debugging tool, primarilly for visualizing how OpenStudio workflows are executing and to see where and when log files are created. 
 "Everything" can be downloaded here: https://www.voidtools.com/downloads/
+
+# Debugging Tips and Tricks
+
+It is common for OpenStudio workflows to initially fail. Most common and likely reasons for workflow failures are:
+
+1. The file locations of custom OS measures referenced within in the .osw file are not properly located. Note that to properly execute, "custom" OS 
+   measures must be adjcent to the stock OS measures that install with Revit (typically located at "Program Files\NREL\OpenStudio CLI For Revit 2024\measures\"
+2. Row data in gbXML "space mapping" .csv file(s) describing space names and space ids (used by the service hot water and the baseline measures)
+   **are not synchronized** with the space names and space found in the 'target' Revit exported gbXML file.
+3.. An invalid (unsporrted value) of a measure enumeration is being used for a measure argument. For example, cell b3 of file "Building_Baseline_Mappings" is being 
+incorrectly specified as **"901-2010"**  instead of the required enumeration of **"90.1-2010**.
+
+When this occurs, a logical troubleshooting strategy might be to:  
+1. Export the gbXML file from Revit. 
+2. Set up a local environment using the OpenStudio command line interface (https://nrel.github.io/OpenStudio-user-documentation/reference/command_line_interface/)
+3. Edit the .osw file to point it o the local gbXML file, and local versions of measures used in the customworkflow. 
+4. Execute the simulation to locally reproduce the error. Review the **"run.log"** file that is created when a workflow fails, in the **"/run"** directory of the local datapoint,  
+5. Once OS measures are configured (setting csv file properties correctly, etc) such that a simulation executes successfully locally, ensure that 
+Revit is pointed to the measure used to successfully simulate.
+6. Restart Revit to ensure new Systems Analysis informaiton is updated in the Revit UI.
+7. From the Revit UI, launch the custom workflow.
