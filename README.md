@@ -564,9 +564,11 @@ executing all reporting measures. Within these (3) categories, mesures execute s
   12. "OpenStudio Results" <sup>3</sup>
   13. "Systems Analysis Report" <sup>3</sup>
  
- <sup>1</sup> This measure is an OpenStudio Measure.
- <sup>2</sup>This measure is an EnergyPlus Measure.
- <sup>3</sup> This measure is a Reporting Measure.
+ <sup>1</sup>OpenStudio Measure.
+
+ <sup>2</sup>EnergyPlus Measure.
+
+ <sup>3</sup>Reporting Measure.
   
 The Revit command **'File->Options->File Locations'** can be executed, to point Revit to the location of the workflow file.
 
