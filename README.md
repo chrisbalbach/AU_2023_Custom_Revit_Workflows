@@ -38,17 +38,17 @@ The following OpenStudio measures are included in this repository. Users can dow
 4. "revit_add_pv_add_storage_tou"
 5. "revit_create_typical_shw_systems_using_os_standards_gem"
 
-Each of these measures requires the user to create (pre-process) at least (1) .csv file. In some cases, the pre-processed csv files will need informaiton that 
+Each of these measures requires the user to create (pre-process) at least (1) .csv file. In some cases, the pre-processed csv files will need information that 
 can be found within the Revit gbXML file export. 
 
 ## Measure 1: "revit_analyze_all_electric_hvac_systems"
 
-This "OpenStudio" measure is designed to allow Revit users to configure and model additional OpenStudio "Air Systems" and "Zone Equipment" HVAC Systems,  
+This "OpenStudio" measure is designed to allow Revit users to configure and model additional OpenStudio "Air Systems" and "Zone Equipment" HVAC Systems,
 beyond those available in the Revit Analytical Systems UI. The measure leverages HVAC system topologies created using the Revit UI, **replacing all**
 pre-defined "Air System" and **replacing all**  predefined "Zone Equipment" OpenStudio objects with new "Air System" and "Zone Equipment" objects based on
 user selections. 
 
-For **all new** HVAC systems, existing System/Zone relationships are preserved. The OpenStudio Application can be used to open the "in.osm" file, where the 
+While **NEW** HVAC systems are created, the existing HVAC System/Zone relationships are preserved. The OpenStudio Application can be used to open the "in.osm" file, where the 
 detailed properties of the **new** HVAC systems can be inspected. All HVAC systems created by this measure are 'auto-sized' - the name of the HVAC system object 
 (available by inspecting the 'in.osm' OpenStudio model file osm) OR EnergyPlus output reports) will contain the autosized capacities of coils, pumps, etc. 
 
@@ -57,12 +57,13 @@ The measure creates many different HVAC systems, whose properties are either:
 1. Defaulted to values set within the OpenStudio Standards gem
 2. Set to 'regulated' values defined by the selected ASHRAE standard.
 
+This measures includes (1) configurable .csv file.
 ### csv file #1: "Building_Level_Mappings.csv"
 
 The .csv file for configuring this measure is named "Building_Level_Mappings.csv", and it is located in the /resources directory of the 
 measure. Values should be provided in column B of the .csv file, for **Row 2 through Row 5**. 
 
-For all Rows, Column E of the .csv file describes the allowable enumarations. 
+For all Rows, Column E of the .csv file describes the allowable enumarations.
 
 1. **Row 2**: An ASHRAE Standard 90.1.2xxx - Used to determine regulated HVAC Equipment efficiencies and controls.
 2. **Row 3**: One type of new 'Air System' - Used to define the 'Air Systems' objects to model. In the OpenStudio energy model, these 'Air Systems' will replace ALL Air Systems 
@@ -80,6 +81,8 @@ OpenStudio measure code to use the values in Column B for **Rows (11 - 41)** hav
 This "EnergyPlus" measure is designed to allow a Revit user to apply electric tariffs of different levels of complexity to OpenStudio models created using Revit. The measure can be used to model very 
 simple tariffs such as a fixed $/kWh rate for all hours or the year. The measure can also be used to model seperate 'time-of-use' and accumulating block tarrifs for power and energy, 
 for both a electricity supplier and an electricity tranmission and distribution provider. Scenarios of differing tariff complexity can be mapped into the 
+
+This measures includes (1) configurable .csv file.
 
 ### csv file #1: "Electric_Utility_Tariff_Arguments.csv"
 
@@ -163,7 +166,6 @@ This table shows the configuraton of the .csv file for a **flat energy tariff of
 |t_and_d_winter_elec_demand_block_2_size       |0            |Double |kW         |T & D|
 |t_and_d_winter_elec_demand_block_2_cost_per_kw|0            |Double |$/kW       |T & D|
 |t_and_d_winter_elec_remaining_cost_per_kw     |0            |Double |$/kW       |T & D|
-
 
 #### example csv file #2: Complex Tariff
 
@@ -264,6 +266,43 @@ This table shows the configuraton of the .csv file for a **complex energy tariff
 
 ## Measure #3 "revit_create_baseline_building"
 
+This "OpenStudio" measure is designed to allow Revit users to creat an "ASHRAE" baseline OpenStudio model. The measure calls several methods from the "OpenStudio Standard Gem" to accomplish this. 
+Revit.
+
+This measures includes (21) configurable .csv files.
+
+### csv file #1: "Building_Baseline_Mappings.csv"
+
+The first .csv file for configuring this measure is named "Building_Baseline_Mappings.csv", and it is located in the /resources directory of the 
+measure. Values should be provided in column B of the .csv file, for **Row 2 through Row 9**. 
+
+For all Rows, Column C of the .csv file describes the allowable enumarations. 
+
+1. **Row 2**: The name of the user-created .csv fileused to link gbXML Space/SpaceTypes to SpaceTypes supported by the OpenStudio Standard Gem.
+2. **Row 3**: A text string for the 'ASHRAE Standard' that the baseline will be constructed to. Allowable enumerations are decribed in lines (31 - 37) of the measure.rb file.
+3. **Row 4**: A text string for the 'Building Type' that will be used by the ASHRAE Standard. Allowable enumerations are decribed in lines (45 - 59) of the measure.rb file.
+4. **Row 5**: A text string for the Climate Zone that will be used by the ASHRAE Standard. Allowable enumerations are decribed in lines (147 - 161) of the measure.rb file.
+4. **Row 6**: A debug boolean variable, NOTE debug output is not visible to Revit users.
+4. **Row 6**: A debug boolean variable, NOTE debug output is not visible to Revit users.
+5. **Row 7**: A text string for the (ASHRAE 90.1-2016 or 90.1-2019) building type for the baseline HVAC system. Allowable enumerations are decribed in lines (66 - 73) of the measure.rb file. 
+5. **Row 8**: A text string for the (ASHRAE 90.1-2016 or 90.1-2019) building type for the window/wall ratio. Allowable enumerations are decribed in lines (80 - 96) of the measure.rb file. 
+5. **Row 9**: A text string for the (ASHRAE 90.1-2016 or 90.1-2019) building type for the baseline SHW system. Allowable enumerations are decribed in lines (103 - 139) of the measure.rb file. 
+
+### csv file #2: "<file_name_is_set_by_user>.csv"
+
+The second .csv file for configuring this measure is named by the user, and this file should saved to the /resources directory of the 
+measure. Values should be provided in columns A, B and C of the .csv file, with one row created for each 'Space" object found in the 
+gbXML file. 
+
+A seperate row shoudl be created for **each** Space object found in the gbXML file.
+
+1. **Column A**: The gbXML Spaceid, extracted from the gbXML file exported by Revit.
+2. **Column B**: The gbXML Space Name, extracted from the gbXML file exported by Revit.
+3. **Column C**: A string composed of (3) sub-strings whose values are defined within the OS Standards Gem. 
+   This string maps regulated values (Space Lighting Power Densities, Lighting System Controls, etc.) of the ASHRAE Standard OS Standrds gem to the Revit space.
+
+    "**Standard**-**BuildingType**-**SpaceType**" 
+
 ## Measure #4 "revit_add_pv_add_storage_tou"
 
 This "OpenStudio" measure is designed to allow Revit users to estimate the energy and power impacts from a 'behind the meter' BES (Battery Energy Storage) system composed of a 
@@ -279,8 +318,9 @@ The measure .csv file can be configured to model a 'Storage Only" scenario by sp
 The measure .csv file can be configured to model a 'PV Only" scenario by specifying a Battery System with a very small value Battery 'Usable Capacity' variable (for example, 0.1 kW).
 'Matched' BES systems (PV + PowerWall, PV + PowerPack, etc.) can be modeled by carefully configuring the .csv file to defining both a PV System and BES properties.
 
-### csv file #1: "PV_Battery_Inputs.csv"
+This measures includes (1) configurable .csv file.
 
+### csv file #1: "PV_Battery_Inputs.csv"
 
 The .csv file for configuring this measure is named "PV_Battery_Inputs.csv", and it is located in the /resources directory of the 
 measure. Values should be provided in column B of the .csv file, for **Row 2 through Row 42**. 
@@ -336,7 +376,6 @@ When the sun is ahining, the PV System will generate Power, which will offset el
 |Storage Control Utility Demand Target                       |kW       |450            |ELCD                      |
 |Minimum Storage State Of Charge Fraction                    |(0-1)    |0.05           |ELCD                      |
 |Maximum Storage State Of Charge Fraction                    |(0-1)    |0.96           |ELCD                      |
- 
 
 #### Example csv file #2: Battery Storage System Only
 
@@ -399,6 +438,8 @@ This "OpenStudio" measure is designed to allow Revit users to add 'typical' serv
 systems and equipment for generating SHW. The measure calls several methods from the "OpenStudio Standard Gem" to accomplish this. 
 Revit Users must populate (2) csv files for thos measure to properly operate. 
 
+This measures includes (21) configurable .csv files.
+
 ### csv file #1: "Bldg_Level_SHW_Systems_Equip_Eff_Map.csv"
 
 The first .csv file for configuring this measure is named "Bldg_Level_SHW_Systems_Equip_Eff_Map.csv", and it is located in the /resources directory of the 
@@ -425,7 +466,6 @@ A seperate row shoudl be created for **each** Space object found in the gbXML fi
    This string defines the peak hot water temperature and flow rate of hot water consuming fixtures associated with each gbXML Space. 
 
     "**Standard**-**BuildingType**-**SpaceType**" 
-   
 
 # Revit Workflow Files
 
@@ -493,12 +533,11 @@ executing all reporting measures. Within these (3) categories, mesures execute s
   10. **"revit_analyze_electric_tariff"** <sup>2</sup>
   11. "OpenStudio Results" <sup>3</sup>
   12. "Systems Analysis Report" <sup>3</sup>
- 
 
- <sup>1</sup> This measure is an OpenStudio Measure.
- <sup>2</sup>This measure is an EnergyPlus Measure.
- <sup>3</sup> This measure is a Reporting Measure.
-  
+ <sup>1</sup>OpenStudio Measure
+ <sup>2</sup>EnergyPlus Measure
+ <sup>3</sup>Reporting Measure
+
 The Revit command **'File->Options->File Locations'** can be executed, to point Revit to the location of the workflow file.
 
 ## Example 2 Annual Building Energy Simulation
@@ -528,10 +567,10 @@ executing all reporting measures. Within these (3) categories, mesures execute s
   11. **"revit_analyze_electric_tariff"** <sup>2</sup>
   12. "OpenStudio Results" <sup>3</sup>
   13. "Systems Analysis Report" <sup>3</sup>
- 
- <sup>1</sup> This measure is an OpenStudio Measure.
- <sup>2</sup>This measure is an EnergyPlus Measure.
- <sup>3</sup> This measure is a Reporting Measure.
+
+ <sup>1</sup>OpenStudio Measure
+ <sup>2</sup>EnergyPlus Measure
+ <sup>3</sup>Reporting Measure
 
 The Revit command **'File->Options->File Locations'** can be executed, to point Revit to the location of the workflow file.
 
@@ -563,15 +602,28 @@ executing all reporting measures. Within these (3) categories, mesures execute s
   11. **"revit_analyze_electric_tariff"** <sup>2</sup>
   12. "OpenStudio Results" <sup>3</sup>
   13. "Systems Analysis Report" <sup>3</sup>
- 
- <sup>1</sup>OpenStudio Measure.
 
- <sup>2</sup>EnergyPlus Measure.
+ <sup>1</sup>OpenStudio Measure
+ <sup>2</sup>EnergyPlus Measure
+ <sup>3</sup>Reporting Measure
 
- <sup>3</sup>Reporting Measure.
-  
 The Revit command **'File->Options->File Locations'** can be executed, to point Revit to the location of the workflow file.
 
 # Useful Scripts
 
+The "LF_ExtractRevitgbXML.rb" ruby script can be found in the 'scripts' folder of this repository. 
+This script can be used with a Revit generated gbXML file to populate a .csv file with the data in the first two columns (needed 
+by both the **"revit_create_baseline_building"** and **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** OpenStudio measures). 
+
+A special shoutout to **Lucas Denit @ Lake|Flato Architects**  for developing and sharing this useful script. 
+
 # Useful Links
+Revit 2024 installations include a 'special' (slimmed down) build of the OpenStudio v3.4.0 Command Line Interface (CLI).  
+Users authoring custom OpenStudio measures for Revit 2024 should seperately download:
+
+1. [OpenStudio API/SDK (v3.4.0)] (https://github.com/NREL/OpenStudio/releases/tag/v3.4.0) 
+2. [OpenStudio Application (v1.4.0)] (https://github.com/openstudiocoalition/OpenStudioApplication/releases/tag/v1.4.0)
+
+"Everything" is a search engine for Windows that locates files and folders by filename instantly. For developing and testing custom workflows,
+It can be a useful debugging tool, primarilly for visualizing how OpenStudio workflows are executing and to see where and when log files are created. 
+"Everything" can be downloaded here: https://www.voidtools.com/downloads/
