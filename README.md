@@ -340,8 +340,9 @@ When the sun is ahining, the PV System will generate Power, which will offset el
 
 #### Example csv file #2: Battery Storage System Only
 
-This table shows the configuraton of the measure .csv file to model the performance of a 75 kW Fixed (Roof Mounted) South Facing PV System. 
-When the sun is ahining, the PV System will generate Power, which will offset electricity purchases. No energy will be stored. 
+This table shows the configuraton of the measure .csv file to model the performance of a 100 kWh Battery System that has been configured to charges
+the battery during non-peak hours (differeing by season) and discharge the battery during peak hours, to avoid purchasing on-peak energy 
+unitl the battery reaches it's iminimal alowable state of charge (SOC). No on-site energy will be generated. 
 
 The measure uses EnergyPlus "ElectricLoadCenter:Storage:LiIonNMCBattery" object to model battery performance.
 EnergPlus documentation for the LiIonNMCBattery object can be found here: https://energyplus.net/assets/nrel_custom/pdfs/pdfs_v23.2.0/InputOutputReference.pdf.
@@ -394,43 +395,159 @@ EnergPlus documentation for the LiIonNMCBattery object can be found here: https:
 
 ## 5) revit_create_typical_shw_systems_using_os_standards_gem
 
+This "OpenStudio" measure is designed to allow Revit users to add 'typical' service hot water peak loads, usage profiles, distribution 
+systems and equipment for generating SHW. The measure calls several methods from the "OpenStudio Standard Gem" to accomplish this. 
+Revit Users must populate (2) csv files for thos measure to properly operate. 
+
+### csv file #1: "Bldg_Level_SHW_Systems_Equip_Eff_Map.csv"
+
+The first .csv file for configuring this measure is named "Bldg_Level_SHW_Systems_Equip_Eff_Map.csv", and it is located in the /resources directory of the 
+measure. Values should be provided in column B of the .csv file, for **Row 2 through Row 4**. 
+
+For all Rows, Column E of the .csv file describes the allowable enumarations. 
+
+1. **Row 2**: The name of the user-created .csv fileused to link gbXML Space/SpaceTypes to SpaceTypes supported by the OpenStudio Standard Gem.
+2. **Row 3**: A text string combining an 'Standard' and a 'BuildingType'. The 'Standard' value will be used to set the SHW equipment efficiency level. 
+   Allowable enumerations are decribed in lines (47 - 193) of the measure.rb file.
+3. **Row 4**: The type of electric water heater that will be created. Allowable enumerations are described in line 253 of the measure.rb file.
+
+### csv file #2: "<file_name_is_set_by_user>.csv"
+
+The second .csv file for configuring this measure is named by the user, and this file should saved to the /resources directory of the 
+measure. Values should be provided in columns A, B and C of the .csv file, with one row created for each 'Space" object found in the 
+gbXML file. 
+
+A seperate row shoudl be created for **each** Space object found in the gbXML file.
+
+1. **Column A**: The gbXML Spaceid, extracted from the gbXML file exported by Revit.
+2. **Column B**: The gbXML Space Name, extracted from the gbXML file exported by Revit.
+3. **Column C**: Either "No SHW" or a string composed of (3) sub-strings whose values are defined within the OS Standards Gem. 
+   This string defines the peak hot water temperature and flow rate of hot water consuming fixtures associated with each gbXML Space. 
+
+    "**Standard**-**BuildingType**-**SpaceType**" 
+   
+
+# Revit Workflow Files
+
+
 # Revit Workflow Files
 
 ## "Example 1 Annual Building Energy Simulation.osw"
 
-This workflow generates a "Energy Analysis Report" by chaining together these measures into a new json .osw file. 
-Note the location that the OpenStudio measures are inserted. This .osw workflow file can be found in the /workflows section of this repository. 
+This table shows the configuraton of the measure .csv file to model the performance of a 100 kWh Battery System that has been configured to charges
+the battery during non-peak hours (differeing by season) and discharge the battery during peak hours, to avoid purchasing on-peak energy 
+unitl the battery reaches it's iminimal alowable state of charge (SOC). No on-site energy will be generated. 
 
-This workflow extends a 'default' Revit workflow by adding (3) new measures that will:
+The measure uses EnergyPlus "ElectricLoadCenter:Storage:LiIonNMCBattery" object to model battery performance.
+EnergPlus documentation for the LiIonNMCBattery object can be found here: https://energyplus.net/assets/nrel_custom/pdfs/pdfs_v23.2.0/InputOutputReference.pdf.
 
 - Add SHW loads and equipment to the Revit generated OpenStudio Model
 - Replace Revit generated HVAC systems with user-defined ALL Electric HVAC Systems, using the topology of existing Air Systems and Zone Equipment 
 - Apply a user-defined Tariff to monotize predicted energy usage.
    
-
   1. "Change Building Location"
   2. "ImportGbxml"
   3. "Advanced Import Gbxml"
   4. "GBXML HVAC Import"
   5. "Set Simulation Control"
   6. "gbxml_to_openstudio_cleanup"
-  7  "Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem" (1)
-  8  "revit_analyze_all_electric_hvac_systems" *(1)
+  7  **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** (1)
+  8  **"revit_analyze_all_electric_hvac_systems"** (1)
   9. "Add XML Output Control Style"
-  10. "revit_analyze_electric_tariff" (2)
+  10. **"revit_analyze_electric_tariff"** (2)
   11. "OpenStudio Results"
   12. "Systems Analysis Report"
  
- (1) OpenStudio Measure
- (2) EnergyPlus Measure
+ (1) This measure is an OpenStudio Measure.
+ (2) This measure is an EnergyPlus Measure.
   
-Once created, the .osw file should be placed in the users directory 
-  
+The Revit command **'File->Options->File Locations'** can be executed, to point Revit to the location of the workflow file.
+
 ## Example 1 HVAC Systems Loads and Sizing
+
+This workflow generates a **HVAC Loads and Sizing"** report" by chaining together these measures into a new json .osw file. 
+The workflow extends a 'default' Revit Loads and Sizing workflow by adding (3) new measures that will:
+
+- Add SHW loads and equipment to the Revit generated OpenStudio Model
+- Replace Revit generated HVAC systems with user-defined ALL Electric HVAC Systems, using the topology of existing Air Systems and Zone Equipment 
+- Apply a user-defined Tariff to monotize predicted energy usage.
+   
+  1. "Change Building Location"
+  2. "ImportGbxml"
+  3. "Advanced Import Gbxml"
+  4. "GBXML HVAC Import"
+  5. "Set Simulation Control"
+  6. "gbxml_to_openstudio_cleanup"
+  7  **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** (1)
+  8  **"revit_analyze_all_electric_hvac_systems"** *(1)
+  9. "Add XML Output Control Style"
+  10. **"revit_analyze_electric_tariff"** (2)
+  11. "OpenStudio Results"
+  12. "Systems Analysis Report"
+ 
+ (1) This measure is an OpenStudio Measure.
+ (2) This measure is an EnergyPlus Measure.
+  
+The Revit command **'File->Options->File Locations'** can be executed, to point Revit to the location of the workflow file.
 
 ## Example 2 Annual Building Energy Simulation
 
+This workflow generates an **"Energy Analysis"**  Report" by chaining together these measures into a new json .osw file. 
+The workflow extends a 'default' Revit Energy workflow by adding (4) new measures that will:
+
+- Add SHW loads and equipment to the Revit generated OpenStudio Model
+- Replace Revit generated HVAC systems with user-defined ALL Electric HVAC Systems, using the topology of existing Air Systems and Zone Equipment 
+- Transform this model into an ASHRAE 90.1 Appendix G variant (a 'baseline' building).
+- Apply a user-defined Tariff to monetize predicted energy usage.
+   
+  1. "Change Building Location"
+  2. "ImportGbxml"
+  3. "Advanced Import Gbxml"
+  4. "GBXML HVAC Import"
+  5. "Set Simulation Control"
+  6. "gbxml_to_openstudio_cleanup"
+  7  **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** (1)
+  8  **"revit_analyze_all_electric_hvac_systems"** (1)
+  9. **revit_create_baseline_building** (1) 
+  10. "Add XML Output Control Style"
+  11. **"revit_analyze_electric_tariff"** (2)
+  12. "OpenStudio Results"
+  13. "Systems Analysis Report"
+ 
+ (1) This measure is an OpenStudio Measure.
+ (2) This measure is an EnergyPlus Measure.
+  
+The Revit command **'File->Options->File Locations'** can be executed, to point Revit to the location of the workflow file.
+
+
 ## Example 2 HVAC Systems Loads and Sizing
+
+This workflow generates a **"HVAC Loads and Sizing"**  Report" by chaining together measures into a new json .osw file. 
+The workflow extends a 'default' Revit Energy workflow by adding (4) new measures that will:
+
+- Add SHW loads and equipment to the Revit generated OpenStudio Model
+- Replace Revit generated HVAC systems with user-defined ALL Electric HVAC Systems, using the topology of existing Air Systems and Zone Equipment 
+- Transform this model into an ASHRAE 90.1 Appendix G variant (a 'baseline' building).
+- Apply a user-defined Tariff to monetize predicted energy usage.
+   
+  1. "Change Building Location"
+  2. "ImportGbxml"
+  3. "Advanced Import Gbxml"
+  4. "GBXML HVAC Import"
+  5. "Set Simulation Control"
+  6. "gbxml_to_openstudio_cleanup"
+  7  **"Revit_Create_Typical_SHW_Systems_Using_OS_Standards_Gem"** (1)
+  8  **"revit_analyze_all_electric_hvac_systems"** (1)
+  9. **revit_create_baseline_building** (1) 
+  10. "Add XML Output Control Style"
+  11. **"revit_analyze_electric_tariff"** (2)
+  12. "OpenStudio Results"
+  13. "Systems Analysis Report"
+ 
+ (1) This measure is an OpenStudio Measure.
+ (2) This measure is an EnergyPlus Measure.
+  
+The Revit command **'File->Options->File Locations'** can be executed, to point Revit to the location of the workflow file.
 
 # Useful Scripts
 
