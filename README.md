@@ -34,16 +34,16 @@ New "Air Systems" and "Zone Equipment" objects and connections to Analytical Spa
 
 The following OpenStudio measures are included in this repository. Users can downloaded and edit these measures to create custom OS workflows, in Revit. 
 
-1. "revit_analyze_all_electric_hvac_systems" 
-2. "revit_analyze_electric_tariff"
-3. "revit_create_baseline_building" 
-4. "revit_add_pv_add_storage_tou"
-5. "revit_create_typical_shw_systems_using_os_standards_gem"
+1. ["revit_analyze_all_electric_hvac_systems"](##measure-#1:-"revit_analyze_all_electric_hvac_systems") 
+2. ["revit_analyze_electric_tariff"](##measure-#2:-"revit_analyze_electric_tariff")
+3. ["revit_create_baseline_building"](##measure-#3-"revit_create_baseline_building") 
+4. ["revit_add_pv_add_storage_tou"](##measure-#4-"revit_add_pv_add_storage_tou")
+5. ["revit_create_typical_shw_systems_using_os_standards_gem"](##measure-#5-"revit_create_typical_shw_systems_using_os_standards_gem")
 
 Each of these measures requires the user to create (pre-process) at least (1) .csv file. In some cases, the pre-processed csv files will need information that 
 can be found within the Revit gbXML file export. 
 
-## Measure 1: "revit_analyze_all_electric_hvac_systems"
+## Measure #1: "revit_analyze_all_electric_hvac_systems"
 
 This "OpenStudio" measure is designed to allow Revit users to configure and model additional OpenStudio "Air Systems" and "Zone Equipment" HVAC Systems,
 beyond those available in the Revit Analytical Systems UI. The measure leverages HVAC system topologies created using the Revit UI, **replacing all**
@@ -78,7 +78,7 @@ Optional (parameter override) values can be provided in Column B for Rows (6 - 1
 
 OpenStudio measure code to use the values in Column B for **Rows (11 - 41)** have not been written/tested. 
 
-## Measure 2: "revit_analyze_electric_tariff"
+## Measure #2: "revit_analyze_electric_tariff"
 
 This "EnergyPlus" measure is designed to allow a Revit user to apply electric tariffs of different levels of complexity to OpenStudio models created using Revit. The measure can be used to model very 
 simple tariffs such as a fixed $/kWh rate for all hours or the year. The measure can also be used to model seperate 'time-of-use' and accumulating block tarrifs for power and energy, 
@@ -431,11 +431,8 @@ EnergPlus documentation for the LiIonNMCBattery object can be found here: https:
 |Storage Control Utility Demand Target                       |kW       |450            |ELCD                      |
 |Minimum Storage State Of Charge Fraction                    |(0-1)    |0.05           |ELCD                      |
 |Maximum Storage State Of Charge Fraction                    |(0-1)    |0.96           |ELCD                      |
- 
 
-
-## 5) revit_create_typical_shw_systems_using_os_standards_gem
-
+## Measure #5 "revit_create_typical_shw_systems_using_os_standards_gem"
 This "OpenStudio" measure is designed to allow Revit users to add 'typical' service hot water peak loads, usage profiles, distribution 
 systems and equipment for generating SHW. The measure calls several methods from the "OpenStudio Standard Gem" to accomplish this. 
 Revit Users must populate (2) csv files for thos measure to properly operate. 
@@ -471,10 +468,7 @@ A seperate row shoudl be created for **each** Space object found in the gbXML fi
 
 # Revit Workflow Files
 
-
-# Revit Workflow Files
-
-## "Example 1 Annual Building Energy Simulation.osw"
+## File: "Example 1 Annual Building Energy Simulation.osw" 
 
 This table shows the configuraton of the measure .csv file to model the performance of a 100 kWh Battery System that has been configured to charges
 the battery during non-peak hours (differeing by season) and discharge the battery during peak hours, to avoid purchasing on-peak energy 
@@ -510,7 +504,7 @@ executing all reporting measures. Within these (3) categories, mesures execute s
 
 The Revit command **'File->Options->File Locations'** can be executed, to point Revit to the location of the workflow file.
 
-## Example 1 HVAC Systems Loads and Sizing
+## File: "Example 1 HVAC Systems Loads and Sizing.osw"
 
 This workflow generates a **HVAC Loads and Sizing"** report" by chaining together these measures into a new json .osw file. 
 The workflow extends a 'default' Revit Loads and Sizing workflow by adding (3) new measures that will:
@@ -542,7 +536,7 @@ executing all reporting measures. Within these (3) categories, mesures execute s
 
 The Revit command **'File->Options->File Locations'** can be executed, to point Revit to the location of the workflow file.
 
-## Example 2 Annual Building Energy Simulation
+## File: "Example 2 Annual Building Energy Simulation.osw"
 
 This workflow generates an **"Energy Analysis"**  Report" by chaining together these measures into a new json .osw file. 
 The workflow extends a 'default' Revit Energy workflow by adding (4) new measures that will:
@@ -576,8 +570,7 @@ executing all reporting measures. Within these (3) categories, mesures execute s
 
 The Revit command **'File->Options->File Locations'** can be executed, to point Revit to the location of the workflow file.
 
-
-## Example 2 HVAC Systems Loads and Sizing
+## File: "Example 2 HVAC Systems Loads and Sizing.osw"
 
 This workflow generates a **"HVAC Loads and Sizing"**  Report" by chaining together measures into a new json .osw file. 
 The workflow extends a 'default' Revit Energy workflow by adding (4) new measures that will:
@@ -623,8 +616,8 @@ A special shoutout to **Lucas Denit @ Lake|Flato Architects**  for developing an
 Revit 2024 installations include a 'special' (slimmed down) build of the OpenStudio v3.4.0 Command Line Interface (CLI).  
 Users authoring custom OpenStudio measures for Revit 2024 should seperately download:
 
-1. [OpenStudio API/SDK (v3.4.0)] (https://github.com/NREL/OpenStudio/releases/tag/v3.4.0) 
-2. [OpenStudio Application (v1.4.0)] (https://github.com/openstudiocoalition/OpenStudioApplication/releases/tag/v1.4.0)
+1. [OpenStudio API/SDK (v3.4.0)](https://github.com/NREL/OpenStudio/releases/tag/v3.4.0) 
+2. [OpenStudio Application (v1.4.0)](https://github.com/openstudiocoalition/OpenStudioApplication/releases/tag/v1.4.0)
 
 "Everything" is a search engine for Windows that locates files and folders by filename instantly. For developing and testing custom workflows,
 It can be a useful debugging tool, primarilly for visualizing how OpenStudio workflows are executing and to see where and when log files are created. 
