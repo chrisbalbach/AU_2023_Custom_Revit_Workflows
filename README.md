@@ -17,6 +17,7 @@ Users attempting to recreate the work demonstrated during this AU class should e
 * [Revit Workflow files](#revit-workflow-files)
 * [Useful Scripts](#useful-scripts)
 * [Useful Links](#useful-links)
+* [Debugging Tips and Tricks](#debugging-tips-and -tricks)
 
 # Revit File
 
