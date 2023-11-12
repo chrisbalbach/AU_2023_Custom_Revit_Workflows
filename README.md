@@ -449,7 +449,7 @@ The list below describes the sequential order of the measures that are used to c
 executing all reporting measures. Within these (3) categories, mesures execute sequentially, with the results (outpout)
  from one measure passing as (input) into the next measure.
 
-  1. "Change Building Location" (1)
+  1. "Change Building Location" <sup>1</sup>
   2. "ImportGbxml" (1)
   3. "Advanced Import Gbxml" (1)
   4. "GBXML HVAC Import" (1)
