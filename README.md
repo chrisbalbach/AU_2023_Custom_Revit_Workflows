@@ -1,6 +1,15 @@
 # AU_2023_Custom_Revit_Workflows
 This repository contains the Revit Projects, OpenStudio Measures and Revit Workflows needed to reproduce the work presented at the AU 2023 Session 602389 Titled "Design and Analysis of Building Electrification with Revit Systems Analysis" 
 
+# Dependencies
+
+Users attempting to recreate the work demonstrated during this AU class should ensure they install: 
+
+1. Revit 2024.1 (this Revit version **does not support creating ASHRAE 90.1-2016 or ASHRAE 90.1-2019**  baselines or hot water system/loads.) 
+2. OpenStudio SDK/API v3.4.0 
+3. OpenStudio Application v1.4.0
+4. A text editor (Visual Studio Code, Notepad++, etc.)
+
 ## Table of Content 
 
 * [Revit File](#revit-file)
@@ -9,14 +18,7 @@ This repository contains the Revit Projects, OpenStudio Measures and Revit Workf
 * [Useful Scripts](#useful-scripts)
 * [Useful Links](#useful-links)
 
-# Dependencies
 
-Users attempting to recreate the work demonstrated during this AU class should ensure they install: 
-
-1. Revit 2024.1 (this version of Revit does not support ASHRAE 90.1-2016 or ASHRAE90.1-2019) 
-2. OpenStudio v3.4.0 
-3. OpenStudio Application v1.4.0
-4. A text editor (Visual Studio Code, Notepad++, etc.)
 
 # Revit File
 
